@@ -133,7 +133,7 @@ const data = {
             "Portugués - Español": "https://prezi.com/view/rfxpZcSzaii9XFSVq2tM",
             "Rumano - Español": "https://prezi.com/view/onhYgaGTY1SYkZjarsH2",
             "Ruso - Español": "https://prezi.com/view/hAQwsVmXeM7fPEj4ZgWi",
-            "Serbo-Croata - Español (alfabeto latino)": "https://prezi.com/view/Zo9CIFblfvnXukVQMQMv",
+            "Serbocroata - Español (alfabeto latino)": "https://prezi.com/view/Zo9CIFblfvnXukVQMQMv",
             "Sueco - Español": "https://prezi.com/view/03wQSTdDdP8tEf2oUJhe",
             "Turco - Español": "https://prezi.com/view/cCkWWOdOtlkFpiqvjtsz",
             "Suajili - Español": "https://prezi.com/view/pgOO8udibujPhEwiwyIN",

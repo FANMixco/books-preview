@@ -7,7 +7,12 @@ const translations = {
         qr: "Show QR Code",
         qrTitle: "Scan to open this page",
         close: "Close",
-        followMe: "Follow me"
+        followMe: "Follow me",
+        volumes: {
+            v1: "Volume 1",
+            v2: "Volume 2",
+            mirrors: "Spanish Mirrors (Upcoming)"
+        }
     },
     es: {
         title: "Historias Eternas<br><small>Centro oficial de libros</small>",
@@ -16,7 +21,12 @@ const translations = {
         qr: "Mostrar código QR",
         qrTitle: "Escanea para abrir esta página",
         close: "Cerrar",
-        followMe: "Sígueme"
+        followMe: "Sígueme",
+        volumes: {
+            v1: "Volumen 1",
+            v2: "Volumen 2",
+            mirrors: "Espejos Españoles (Próximamente)"
+        }
     },
     fr: {
         title: "Légendes Éternelles<br><small>Plateforme officielle des livres</small>",
@@ -25,7 +35,12 @@ const translations = {
         qr: "Afficher le code QR",
         qrTitle: "Scannez pour ouvrir cette page",
         close: "Fermer",
-        followMe: "Suivez-moi"
+        followMe: "Suivez-moi",
+        volumes: {
+            v1: "Volume 1",
+            v2: "Volume 2",
+            mirrors: "Miroirs Espagnols (À venir)"
+        }
     }
 };
 
@@ -53,7 +68,7 @@ function applyTranslations() {
 applyTranslations();
 
 const data = {
-    "Volume 1": {
+    v1: {
         preview: "img/volume1.png",
         links: {
             "English": "https://a.co/d/1HQh5JM",
@@ -61,14 +76,14 @@ const data = {
             "Français": "https://a.co/d/7EyHZZm"
         }
     },
-    "Volume 2": {
+    v2: {
         preview: "img/volume2.png",
         links: {
             "English": "https://a.co/d/0HYJyAp",
             "Español": "https://a.co/d/9GF2Ug3"
         }
     },
-    "Spanish Mirrors (Upcoming)": {
+    mirrors: {
         preview: "img/mirrors.png",
         links: {
             "Notify me": "https://amzn.to/3YXGR5W"
@@ -97,12 +112,24 @@ function renderVolume(name) {
     previewImage.src = volume.preview;
 }
 
-Object.keys(data).forEach((key) => {
-    const option = document.createElement("option");
-    option.value = key;
-    option.textContent = key;
-    select.appendChild(option);
-});
+function loadVolumes() {
+    const lang = detectLang();
+    const t = translations[lang] || translations.en;
+    const titles = t.volumes || translations.en.volumes;
+
+    const previous = select.value;
+    select.innerHTML = "";
+
+    Object.keys(data).forEach((id) => {
+        const option = document.createElement("option");
+        option.value = id;
+        option.textContent = titles[id] || translations.en.volumes[id] || id;
+        select.appendChild(option);
+    });
+
+    // keep selection if possible
+    select.value = data[previous] ? previous : Object.keys(data)[0];
+}
 
 select.addEventListener("change", (e) => {
     renderVolume(e.target.value);
@@ -136,6 +163,5 @@ qrModal.addEventListener("click", (e) => {
 });
 
 // Load default
-const firstKey = Object.keys(data)[0];
-select.value = firstKey;
-renderVolume(firstKey);
+loadVolumes();
+renderVolume(select.value);

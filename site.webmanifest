@@ -20,8 +20,8 @@
       "purpose": "any maskable"
     }
   ],
-  "theme_color": "#5A5A5A",
-  "background_color": "#ffffff",
+  "theme_color": "#0f172a",
+  "background_color": "#020617",
   "display": "standalone",
   "dir": "ltr",
   "categories": [

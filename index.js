@@ -12,7 +12,7 @@ const translations = {
             v1: "Volume 1",
             v2: "Volume 2",
             mirrors: "Spanish Mirrors (Upcoming)",
-            children: "Children’s Edition"
+            children: "Bilingual Children’s Edition"
         }
     },
     es: {
@@ -27,7 +27,7 @@ const translations = {
             v1: "Volumen 1",
             v2: "Volumen 2",
             mirrors: "Espejos Españoles (Próximamente)",
-            children: "Edición infantil"
+            children: "Edición infantil bilingüe"
         }
     },
     fr: {
@@ -42,17 +42,15 @@ const translations = {
             v1: "Tome 1",
             v2: "Tome 2",
             mirrors: "Miroirs Espagnols (À venir)",
-            children: "Édition pour enfants"
+            children: "Édition bilingue pour enfants"
         }
     }
 };
-
 
 function detectLang() {
     const lang = (navigator.language || "en").slice(0, 2);
     return translations[lang] ? lang : "en";
 }
-
 
 function applyTranslations() {
     const lang = detectLang();
@@ -95,43 +93,43 @@ const data = {
     children: {
         preview: "img/children.png",
         links: {
-            "English - Español": "https://prezi.com/view/3OA2BbhRZgysnB22bzdX",
-            "Français - Español": "https://prezi.com/view/k1IXa0mNdi7IbZjRgyOA/",
-            "Français - Español (Edición arabe)": "https://prezi.com/view/Zuo6lgIMxQ9RU5oZNYl2",
-            "Turc - Español": "https://prezi.com/view/cCkWWOdOtlkFpiqvjtsz",
-            "हिन्दी - Español": "https://prezi.com/view/UOk2rg59hfZCToQQswki",
-            "اَلْعَرَبِيَّةُ - Español": "https://prezi.com/view/Y1LqND9BGYf54b6k8OrZ",
-            "فارسی - Español": "https://prezi.com/view/n0K4Atj9gyyY9GiyY1TZ",
-            "українська мова - Español": "https://prezi.com/view/WZzaEHSiv8HQmRGL1oFQ",
-            "Indonesian - Español": "https://prezi.com/view/XWdBl2ncAVGOFWCi3Xrr",
-            "Eesti keel - Español": "https://prezi.com/view/1xdsCSW0KyFmkElLMAPl",
-            "Slovene - Español": "https://prezi.com/view/dj0VmXcF35oyZWBWvC4K",
-            "Български - Español": "https://prezi.com/view/bZYnslXGNvOnueznybDY",
-            "Kiswahili - Español": "https://prezi.com/view/pgOO8udibujPhEwiwyIN",
-            "中文 - Español": "https://prezi.com/view/8IwA2B6lYhPwonEWAyi9",
-            "Čeština - Español": "https://prezi.com/view/cfXSdaDBv7RiN3lgxJeB",
-            "Deutsch - Español": "https://prezi.com/view/f1aF8DNokAVBAQZkRFAU",
-            "Polski - Español": "https://prezi.com/view/6OPP09BU4Bl8MmDHJlrg",
-            "Nederlands - Español": "https://prezi.com/view/bQerdVPWk3U5SW6acdhC",
-            "Magyar - Español": "https://prezi.com/view/pMzExuw0SKgo3LUzgpS6",
-            "Slovenčina - Español": "https://prezi.com/view/MW7bKr1hDNgya7xuvDNm",
-            "Tiếng Việt	 - Español": "https://prezi.com/view/0JTPN1JHxuIKnS6CFpqJ",
-            "Norsk - Español": "https://prezi.com/view/Y2tUPDSaXBtjtm9MlY4r",
+            "Afrikáans - Español": "https://prezi.com/view/3WD6lQKuilxlSFYUB6Kh",
+            "Alemán - Español": "https://prezi.com/view/f1aF8DNokAVBAQZkRFAU",
+            "Árabe - Español": "https://prezi.com/view/Y1LqND9BGYf54b6k8OrZ",
+            "Búlgaro - Español": "https://prezi.com/view/bZYnslXGNvOnueznybDY",
+            "Checo - Español": "https://prezi.com/view/cfXSdaDBv7RiN3lgxJeB",
+            "Coreano - Español": "https://prezi.com/view/uY6PMfDYv0fqpKFeEW5c",
+            "Danés - Español": "https://prezi.com/view/Nynk2PpW2Srd3ZsIEnsy",
+            "Eslovaco - Español": "https://prezi.com/view/MW7bKr1hDNgya7xuvDNm",
+            "Esloveno - Español": "https://prezi.com/view/dj0VmXcF35oyZWBWvC4K",
+            "Estoniano - Español": "https://prezi.com/view/1xdsCSW0KyFmkElLMAPl",
+            "Finés - Español": "https://prezi.com/view/sZ5XlmFWl5ayuTr7WY8w",
+            "Francés - Español": "https://prezi.com/view/k1IXa0mNdi7IbZjRgyOA/",
+            "Francés - Español (edición árabe)": "https://prezi.com/view/Zuo6lgIMxQ9RU5oZNYl2",
+            "Griego - Español": "https://prezi.com/view/m2sEkecLYzm8EKJFnVt2",
+            "Hebreo - Español": "https://prezi.com/view/dm7HNuAcMtUJAEX5FkgY",
+            "Húngaro - Español": "https://prezi.com/view/pMzExuw0SKgo3LUzgpS6",
+            "Japonés - Español": "https://prezi.com/view/ygATteMETehlTuL45FFl",
+            "Hindi - Español": "https://prezi.com/view/UOk2rg59hfZCToQQswki",
+            "Indonesio - Español": "https://prezi.com/view/XWdBl2ncAVGOFWCi3Xrr",
+            "⭐ Inglés - Español": "https://prezi.com/view/3OA2BbhRZgysnB22bzdX",
             "Italiano - Español": "https://prezi.com/view/j8Rj4RqvEY7k7gFxRyKU",
-            "Afrikaans - Español": "https://prezi.com/view/3WD6lQKuilxlSFYUB6Kh",
-            "Română - Español": "https://prezi.com/view/onhYgaGTY1SYkZjarsH2",
-            "Русский язык - Español": "https://prezi.com/view/hAQwsVmXeM7fPEj4ZgWi",
-            "Νέα Ελληνικά - Español": "https://prezi.com/view/m2sEkecLYzm8EKJFnVt2",
-            "日本語 - Español": "https://prezi.com/view/ygATteMETehlTuL45FFl",
-            "עברית - Español": "https://prezi.com/view/dm7HNuAcMtUJAEX5FkgY",
-            "Svenska - Español": "https://prezi.com/view/03wQSTdDdP8tEf2oUJhe",
-            "Serbo-Croatian - Español (Alfabeto latino)": "https://prezi.com/view/Zo9CIFblfvnXukVQMQMv",
-            "Dansk - Español": "https://prezi.com/view/Nynk2PpW2Srd3ZsIEnsy",
-            "Suomi - Español": "https://prezi.com/view/sZ5XlmFWl5ayuTr7WY8w",
-            "한국어 - Español": "https://prezi.com/view/uY6PMfDYv0fqpKFeEW5c",
-            "Português - Español": "https://prezi.com/view/rfxpZcSzaii9XFSVq2tM",
-            "Lietuvių - Español": "https://prezi.com/view/IoxjUEj1whibCjvLJhYx",
-            "Latviešu - Español": "https://prezi.com/view/zgrgHl6OUlEemd4xV01n"
+            "Letón - Español": "https://prezi.com/view/zgrgHl6OUlEemd4xV01n",
+            "Lituano - Español": "https://prezi.com/view/IoxjUEj1whibCjvLJhYx",
+            "Mandarín - Español": "https://prezi.com/view/8IwA2B6lYhPwonEWAyi9",
+            "Neerlandés - Español": "https://prezi.com/view/bQerdVPWk3U5SW6acdhC",
+            "Noruego - Español": "https://prezi.com/view/Y2tUPDSaXBtjtm9MlY4r",
+            "Persa - Español": "https://prezi.com/view/n0K4Atj9gyyY9GiyY1TZ",
+            "Polaco - Español": "https://prezi.com/view/6OPP09BU4Bl8MmDHJlrg",
+            "Portugués - Español": "https://prezi.com/view/rfxpZcSzaii9XFSVq2tM",
+            "Rumano - Español": "https://prezi.com/view/onhYgaGTY1SYkZjarsH2",
+            "Ruso - Español": "https://prezi.com/view/hAQwsVmXeM7fPEj4ZgWi",
+            "Serbo-Croata - Español (alfabeto latino)": "https://prezi.com/view/Zo9CIFblfvnXukVQMQMv",
+            "Sueco - Español": "https://prezi.com/view/03wQSTdDdP8tEf2oUJhe",
+            "Turco - Español": "https://prezi.com/view/cCkWWOdOtlkFpiqvjtsz",
+            "Suajili - Español": "https://prezi.com/view/pgOO8udibujPhEwiwyIN",
+            "Ucraniano - Español": "https://prezi.com/view/WZzaEHSiv8HQmRGL1oFQ",
+            "Vietnamita	 - Español": "https://prezi.com/view/0JTPN1JHxuIKnS6CFpqJ",
         }
     }
 };

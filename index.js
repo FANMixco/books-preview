@@ -3,7 +3,7 @@ const data = {
     preview: "img/volume1.png",
     links: {
         "English": "https://a.co/d/1HQh5JM",
-        "Español": "https://a.co/d/c2MDHld",
+        "Español": "https://a.co/d/5RiXGEZ",
         "Français": "https://a.co/d/7EyHZZm"
     }
     },

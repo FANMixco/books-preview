@@ -30,15 +30,15 @@ const translations = {
     },
     fr: {
         title: "Légendes Éternelles<br><small>Plateforme officielle des livres</small>",
-        subtitle: "Accès rapide à tous les volumes et langues",
-        select: "Sélectionner le volume",
+        subtitle: "Accès rapide à tous les tomes et langues",
+        select: "Sélectionner le tome",
         qr: "Afficher le code QR",
         qrTitle: "Scannez pour ouvrir cette page",
         close: "Fermer",
         followMe: "Suivez-moi",
         volumes: {
-            v1: "Volume 1",
-            v2: "Volume 2",
+            v1: "Tome 1",
+            v2: "Tome 2",
             mirrors: "Miroirs Espagnols (À venir)"
         }
     }

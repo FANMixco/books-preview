@@ -36,7 +36,8 @@ h1 {
     margin-bottom: 0.5rem;
 }
 
-h1, #subtitle {
+h1,
+#subtitle {
     text-align: center;
 }
 
@@ -113,6 +114,7 @@ select {
     color: var(--muted);
     text-align: center;
 }
+
 .modal {
     position: fixed;
     top: 0;
@@ -147,4 +149,21 @@ select {
     border-radius: 0.75rem;
     background: #fff;
     padding: 0.5rem;
+}
+
+.share-fab {
+    background: var(--card);
+    border: 1px solid #1e293b;
+    color: var(--text);
+
+    border-radius: 0.75rem;
+    padding: 0.4rem 0.6rem;
+    font-size: 1rem;
+    cursor: pointer;
+
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+#divShare {
+    text-align: right;
 }

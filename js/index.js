@@ -224,3 +224,34 @@ qrModal.addEventListener("click", (e) => {
 // Load default
 loadVolumes();
 renderVolume(select.value);
+
+const shareButton = document.getElementById("shareButton");
+
+shareButton.addEventListener("click", async () => {
+  const url = window.location.href;
+  const lang = detectLang();
+  const t = translations[lang] || translations.en;
+
+  // Mobile native share
+  if (navigator.share) {
+    try {
+      await navigator.share({
+        title: "Timeless Stories",
+        text: t.subtitle,
+        url
+      });
+    } catch (e) {
+      // user cancelled — do nothing
+    }
+  } else {
+    // Desktop fallback: copy to clipboard
+    await navigator.clipboard.writeText(url);
+    alert(
+      lang === "es"
+        ? "Enlace copiado"
+        : lang === "fr"
+        ? "Lien copié"
+        : "Link copied"
+    );
+  }
+});

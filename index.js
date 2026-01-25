@@ -105,7 +105,7 @@ const data = {
             "Estoniano - Español": "https://prezi.com/view/1xdsCSW0KyFmkElLMAPl",
             "Finés - Español": "https://prezi.com/view/sZ5XlmFWl5ayuTr7WY8w",
             "Francés - Español": "https://prezi.com/view/k1IXa0mNdi7IbZjRgyOA/",
-            "Francés - Español (edición árabe)": "https://prezi.com/view/Zuo6lgIMxQ9RU5oZNYl2",
+            "Francés - Español (mundo árabe)": "https://prezi.com/view/Zuo6lgIMxQ9RU5oZNYl2",
             "Griego - Español": "https://prezi.com/view/m2sEkecLYzm8EKJFnVt2",
             "Hebreo - Español": "https://prezi.com/view/dm7HNuAcMtUJAEX5FkgY",
             "Húngaro - Español": "https://prezi.com/view/pMzExuw0SKgo3LUzgpS6",

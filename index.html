@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Federico – Timeless Stories Link Dashboard</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #020617;
+      --text: #e5e7eb;
+      --muted: #94a3b8;
+      --accent: #38bdf8;
+    }
+
+    * {
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background: linear-gradient(180deg, #020617, #0f172a);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+    }
+
+    .app {
+      width: 100%;
+      max-width: 420px;
+      background: var(--card);
+      border-radius: 1.5rem;
+      padding: 1.5rem;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-top: 0;
+      margin-bottom: 1.5rem;
+    }
+
+    label {
+      font-size: 0.8rem;
+      color: var(--muted);
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+
+    select {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border-radius: 0.75rem;
+      border: none;
+      background: #020617;
+      color: var(--text);
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .link-btn {
+      display: block;
+      text-decoration: none;
+      padding: 0.75rem 1rem;
+      border-radius: 0.75rem;
+      background: #020617;
+      color: var(--text);
+      text-align: center;
+      border: 1px solid #1e293b;
+      transition: all 0.15s ease;
+    }
+
+    .link-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    .preview {
+      margin-top: 1rem;
+      border-radius: 1rem;
+      overflow: hidden;
+      border: 1px solid #1e293b;
+    }
+
+    .preview img {
+      width: 100%;
+      display: block;
+    }
+
+    .footer {
+      margin-top: 1rem;
+      font-size: 0.7rem;
+      color: var(--muted);
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <h1>Timeless Stories Links</h1>
+    <p>Quick access to all volumes and languages</p>
+
+    <label for="volumeSelect">Select volume</label>
+    <select id="volumeSelect"></select>
+
+    <div class="links" id="linksContainer"></div>
+
+    <div class="preview">
+      <img id="previewImage" src="" alt="Book preview" />
+    </div>
+
+    <div class="footer">Federico · Mobile Dashboard</div>
+  </div>
+
+  <script>
+    const data = {
+      "Volume 1": {
+        preview: "img/volume1.png",
+        links: {
+          "English": "https://a.co/d/1HQh5JM",
+          "Español": "https://a.co/d/c2MDHld",
+          "Français": "https://a.co/d/7EyHZZm"
+        }
+      },
+      "Volume 2": {
+        preview: "img/volume2.png",
+        links: {
+          "English": "https://a.co/d/0HYJyAp",
+          "Spanish": "https://a.co/d/9GF2Ug3"
+        }
+      },
+      "Spanish Mirrors (Upcoming)": {
+        preview: "img/mirrors.png",
+        links: {
+          "Notify me": "https://amzn.to/3YXGR5W"
+        }
+      }
+    };
+
+    const select = document.getElementById("volumeSelect");
+    const linksContainer = document.getElementById("linksContainer");
+    const previewImage = document.getElementById("previewImage");
+
+    function renderVolume(name) {
+      const volume = data[name];
+
+      linksContainer.innerHTML = "";
+
+      Object.entries(volume.links).forEach(([label, url]) => {
+        const a = document.createElement("a");
+        a.className = "link-btn";
+        a.href = url;
+        a.target = "_blank";
+        a.textContent = label;
+        linksContainer.appendChild(a);
+      });
+
+      previewImage.src = volume.preview;
+    }
+
+    Object.keys(data).forEach((key) => {
+      const option = document.createElement("option");
+      option.value = key;
+      option.textContent = key;
+      select.appendChild(option);
+    });
+
+    select.addEventListener("change", (e) => {
+      renderVolume(e.target.value);
+    });
+
+    // Load default
+    const firstKey = Object.keys(data)[0];
+    select.value = firstKey;
+    renderVolume(firstKey);
+  </script>
+</body>
+</html>

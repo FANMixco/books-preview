@@ -13,6 +13,9 @@ const translations = {
             v2: "Volume 2",
             mirrors: "Spanish Mirrors (Upcoming)",
             children: "Bilingual Children’s Edition"
+        },
+        links: {
+            notify: "Notify me 🔔"
         }
     },
     es: {
@@ -28,6 +31,9 @@ const translations = {
             v2: "Volumen 2",
             mirrors: "Espejos Españoles (Próximamente)",
             children: "Edición infantil bilingüe"
+        },
+        links: {
+            notify: "Avísame 🔔"
         }
     },
     fr: {
@@ -43,6 +49,9 @@ const translations = {
             v2: "Tome 2",
             mirrors: "Miroirs Espagnols (À venir)",
             children: "Édition bilingue pour enfants"
+        },
+        links: {
+            notify: "Me notifier 🔔"
         }
     }
 };
@@ -87,7 +96,7 @@ const data = {
     mirrors: {
         preview: "img/mirrors.png",
         links: {
-            "Notify me": "https://amzn.to/3YXGR5W"
+            notify: "https://amzn.to/3YXGR5W"
         }
     },
     children: {
@@ -139,20 +148,27 @@ const linksContainer = document.getElementById("linksContainer");
 const previewImage = document.getElementById("previewImage");
 
 function renderVolume(name) {
-    const volume = data[name];
+  const volume = data[name];
 
-    linksContainer.innerHTML = "";
+  const lang = detectLang();
+  const t = translations[lang] || translations.en;
+  const linkLabels = t.links || translations.en.links || {};
 
-    Object.entries(volume.links).forEach(([label, url]) => {
-        const a = document.createElement("a");
-        a.className = "link-btn";
-        a.href = url;
-        a.target = "_blank";
-        a.textContent = label;
-        linksContainer.appendChild(a);
-    });
+  linksContainer.innerHTML = "";
 
-    previewImage.src = volume.preview;
+  Object.entries(volume.links).forEach(([key, url]) => {
+    const a = document.createElement("a");
+    a.className = "link-btn";
+    a.href = url;
+    a.target = "_blank";
+
+    // Use translated label instead of raw key
+    a.textContent = linkLabels[key] || key;
+
+    linksContainer.appendChild(a);
+  });
+
+  previewImage.src = volume.preview;
 }
 
 function loadVolumes() {

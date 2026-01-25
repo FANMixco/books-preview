@@ -1,11 +1,11 @@
 {
-  "name": "Timeless Stories of El Salvador",
-  "short_name": "Timeless Stories",
+  "name": "Timeless Stories — Official Book Hub",
+  "short_name": "Official Book Hub",
   "scope": "http://books.federiconavarrete.com/",
   "start_url": "http://books.federiconavarrete.com/",
   "orientation": "portrait-primary",
   "lang": "en",
-  "description": "Direct links to Timeless Stories of El Salvador",
+  "description": "Direct links to Timeless Stories",
   "icons": [
     {
       "src": "img/favicons/maskable_icon_x192.png",

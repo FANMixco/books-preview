@@ -6,13 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Federico – Timeless Stories Link Dashboard</title>
     <link rel="stylesheet" href="index.css">
-	<!-- Meta Description -->
-	<meta name="description"
-		content="A series of books written by Federico Navarrete. They represent the largest collection of Salvadoran oral stories in English.">
+    <!-- Meta Description -->
+    <meta name="description"
+        content="A series of books written by Federico Navarrete. They represent the largest collection of Salvadoran oral stories in English.">
 
-        <!-- Favicon-->
-	<meta name="keywords"
-		content="timeless stories, el salvador, folklore, legends, fairytales, ciptio, black night, siguanaba, francis drake, children, lodz, poland, madrid, spain, españa, cadejo,Federico Navarrete,audible,kdp,amazon,audiobook,book,cuyancua,fiction,guirola,angel,family,history">
+    <!-- Favicon-->
+    <meta name="keywords"
+        content="timeless stories, el salvador, folklore, legends, fairytales, ciptio, black night, siguanaba, francis drake, children, lodz, poland, madrid, spain, españa, cadejo,Federico Navarrete,audible,kdp,amazon,audiobook,book,cuyancua,fiction,guirola,angel,family,history">
 
     <link rel="apple-touch-icon" sizes="180x180" href="img/favicons/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="img/favicons/favicon-32x32.png">
@@ -22,35 +22,38 @@
 
 <body>
     <div class="app">
-        <h1>Timeless Stories Links</h1>
-        <p>Quick access to all volumes and languages</p>
+        <h1 id="title"></h1>
+        <p id="subtitle"></p>
 
-        <label for="volumeSelect">Select volume</label>
+        <label for="volumeSelect" id="selectLabel"></label>
         <select id="volumeSelect"></select>
 
         <div class="links" id="linksContainer"></div>
-
-        <a href="#" class="link-btn" id="qrButton">Show QR Code</a>
 
         <div class="preview">
             <img id="previewImage" src="" alt="Book preview" />
         </div>
 
-        <div class="footer">Federico · Mobile Dashboard</div>
+        <a href="#" class="link-btn link-qr" id="qrButton"></a>
+
+        <a href="https://amzn.to/3YXGR5W" target="_blank" class="link-btn link-qr" id="followMe"></a>
+
+        <div class="footer"><a href="https://www.cognitoforms.com/FedericoNavarrete1/LetsGetInTouchTimelessStories"
+                target="_blank">Federico</a> · Mobile Dashboard</div>
     </div>
 
     <!-- QR Modal -->
     <div class="modal" id="qrModal">
         <div class="modal-content">
-            <h2>Scan to open this page</h2>
+            <h2 id="qrTitle"></h2>
             <img id="qrImage" src="" alt="QR Code" />
-            <a href="#" class="link-btn" id="closeModal">Close</a>
+            <a href="#" class="link-btn" id="closeModal"></a>
         </div>
     </div>
 
     <script src="index.js"></script>
 
-	<script type="application/ld+json">
+    <script type="application/ld+json">
 			{
 			  "@context": "https://schema.org/",
 			  "@type": "WebSite",
@@ -62,7 +65,17 @@
 				"query-input": "required name=search_term_string"
 			  }
 			}
-		</script>
+    </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y6F0CLJDS8"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-Y6F0CLJDS8');
+    </script>
 </body>
 
 </html>

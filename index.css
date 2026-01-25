@@ -80,6 +80,10 @@ select {
     transition: all 0.15s ease;
 }
 
+.link-qr {
+    margin-top: 0.75rem;
+}
+
 .link-btn:hover {
     border-color: var(--accent);
     color: var(--accent);
@@ -88,6 +92,7 @@ select {
 
 .preview {
     margin-top: 1rem;
+    margin-bottom: 1.25rem;
     border-radius: 1rem;
     overflow: hidden;
     border: 1px solid #1e293b;

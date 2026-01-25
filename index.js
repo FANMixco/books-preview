@@ -1,7 +1,7 @@
 // --- Simple i18n (EN / ES / FR) ---
 const translations = {
     en: {
-        title: "Timeless Stories — Official Book Hub",
+        title: "Timeless Stories<br><small>Official Book Hub</small>",
         subtitle: "Quick access to all volumes and languages",
         select: "Select volume",
         qr: "Show QR Code",
@@ -10,7 +10,7 @@ const translations = {
         followMe: "Follow me"
     },
     es: {
-        title: "Historias Eternas — Centro oficial de libros",
+        title: "Historias Eternas<br><small>Centro oficial de libros</small>",
         subtitle: "Acceso rápido a todos los volúmenes e idiomas",
         select: "Seleccionar volumen",
         qr: "Mostrar código QR",
@@ -19,7 +19,7 @@ const translations = {
         followMe: "Sígueme"
     },
     fr: {
-        title: "Légendes Éternelles — Plateforme officielle des livres",
+        title: "Légendes Éternelles<br><small>Plateforme officielle des livres</small>",
         subtitle: "Accès rapide à tous les volumes et langues",
         select: "Sélectionner le volume",
         qr: "Afficher le code QR",

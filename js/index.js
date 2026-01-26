@@ -4,7 +4,6 @@ const translations = {
         title: "Timeless Stories<br><small>Official Book Hub</small>",
         subtitle: "Quick access to all volumes and languages",
         select: "Select volume",
-        qr: "Show QR Code",
         qrTitle: "Scan to open this page",
         close: "Close",
         followMe: "Follow me",
@@ -22,7 +21,6 @@ const translations = {
         title: "Historias Eternas<br><small>Centro oficial de libros</small>",
         subtitle: "Acceso rápido a todos los volúmenes e idiomas",
         select: "Seleccionar volumen",
-        qr: "Mostrar código QR",
         qrTitle: "Escanea para abrir esta página",
         close: "Cerrar",
         followMe: "Sígueme",
@@ -40,7 +38,6 @@ const translations = {
         title: "Légendes Éternelles<br><small>Plateforme officielle des livres</small>",
         subtitle: "Accès rapide à tous les tomes et langues",
         select: "Sélectionner le tome",
-        qr: "Afficher le code QR",
         qrTitle: "Scannez pour ouvrir cette page",
         close: "Fermer",
         followMe: "Suivez-moi",
@@ -69,7 +66,6 @@ function applyTranslations() {
     document.getElementById("title").innerHTML = t.title;
     document.getElementById("subtitle").innerHTML = t.subtitle;
     document.getElementById("selectLabel").textContent = t.select;
-    document.getElementById("qrButton").textContent = t.qr;
     document.getElementById("qrTitle").textContent = t.qrTitle;
     document.getElementById("closeModal").textContent = t.close;
     document.getElementById("followMe").textContent = t.followMe;

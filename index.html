@@ -37,8 +37,12 @@
 
 <body>
     <div class="app">
-        <div id="divShare">
-            <button id="shareButton" class="share-fab" aria-label="Share link">🔗</button>
+        <div>
+            <div class="div1">
+                <button id="qrButton" class="share-fab" aria-label="Show QR Code">🔳</button>            </div>
+            <div class="div2">
+                <button id="shareButton" class="share-fab" aria-label="Share link">🔗</button>
+            </div>
         </div>
         <h1 id="title"></h1>
         <p id="subtitle"></p>
@@ -51,8 +55,6 @@
         <div class="preview">
             <img id="previewImage" src="" alt="Book preview" />
         </div>
-
-        <a href="#" class="link-btn link-qr" id="qrButton"></a>
 
         <a href="https://amzn.to/3YXGR5W" target="_blank" class="link-btn link-qr" id="followMe"></a>
 
@@ -69,7 +71,7 @@
         </div>
     </div>
 
-    <script src="js/index.min.js"></script>
+    <script src="js/index.js"></script>
 
     <script type="application/ld+json">
 			{

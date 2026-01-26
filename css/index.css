@@ -165,13 +165,15 @@ select {
 }
 
 .div1 {
-    width: 50%;
-    float: left;
     height: 100%;
 }
+
 .div2 {
-    width: 50%;
-    float: right;
-    height: 100%;
     text-align: right;
+}
+
+.row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem; /* optional spacing between columns */
 }

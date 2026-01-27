@@ -68,6 +68,7 @@ select {
 
 #selectLabel {
     font-weight: bolder;
+    text-align: center;
 }
 
 .links {

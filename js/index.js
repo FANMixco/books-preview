@@ -3,7 +3,7 @@ const translations = {
     en: {
         title: "Timeless Stories<br><small>Official Book Hub</small>",
         subtitle: "Quick access to all volumes and languages",
-        select: "Select volume",
+        select: "Choose a Volume",
         qrTitle: "Scan to open this page",
         close: "Close",
         followMe: "Follow me",
@@ -20,7 +20,7 @@ const translations = {
     es: {
         title: "Historias Eternas<br><small>Centro oficial de libros</small>",
         subtitle: "Acceso rápido a todos los volúmenes e idiomas",
-        select: "Seleccionar volumen",
+        select: "Selecciona un Volumen",
         qrTitle: "Escanea para abrir esta página",
         close: "Cerrar",
         followMe: "Sígueme",
@@ -37,7 +37,7 @@ const translations = {
     fr: {
         title: "Légendes Éternelles<br><small>Plateforme officielle des livres</small>",
         subtitle: "Accès rapide à tous les tomes et langues",
-        select: "Sélectionner le tome",
+        select: "Sélectionnez un Tome",
         qrTitle: "Scannez pour ouvrir cette page",
         close: "Fermer",
         followMe: "Suivez-moi",

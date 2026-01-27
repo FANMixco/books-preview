@@ -66,6 +66,10 @@ select {
     margin-bottom: 1rem;
 }
 
+#selectLabel {
+    font-weight: bolder;
+}
+
 .links {
     display: flex;
     flex-direction: column;

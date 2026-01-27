@@ -3,7 +3,7 @@ const translations = {
     en: {
         title: "Timeless Stories<br><small>Official Book Hub</small>",
         subtitle: "Quick access to all volumes and languages",
-        select: "Choose a Volume ⛛",
+        select: "Choose a Volume ⧨",
         qrTitle: "Scan to open this page",
         close: "Close",
         followMe: "Follow me",
@@ -20,7 +20,7 @@ const translations = {
     es: {
         title: "Historias Eternas<br><small>Centro oficial de libros</small>",
         subtitle: "Acceso rápido a todos los volúmenes e idiomas",
-        select: "Selecciona un Volumen ⛛",
+        select: "Selecciona un Volumen ⧨",
         qrTitle: "Escanea para abrir esta página",
         close: "Cerrar",
         followMe: "Sígueme",

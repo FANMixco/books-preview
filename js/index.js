@@ -14,7 +14,7 @@ const translations = {
             children: "Bilingual Children’s Edition"
         },
         links: {
-            notify: "Notify me 🔔"
+            notify: "Notify me 🔔 ⇛ 🇬🇧🇪🇸🇫🇷"
         }
     },
     es: {
@@ -31,7 +31,7 @@ const translations = {
             children: "Edición infantil bilingüe"
         },
         links: {
-            notify: "Avísame 🔔"
+            notify: "Avísame 🔔 ⇛ 🇬🇧🇪🇸🇫🇷"
         }
     },
     fr: {
@@ -48,7 +48,7 @@ const translations = {
             children: "Édition bilingue pour enfants"
         },
         links: {
-            notify: "Me notifier 🔔"
+            notify: "Me notifier 🔔 ⇛ 🇬🇧🇪🇸🇫🇷"
         }
     }
 };
@@ -77,16 +77,16 @@ const data = {
     v1: {
         preview: "img/volume1.png",
         links: {
-            "English": "https://a.co/d/1HQh5JM",
-            "Español": "https://a.co/d/5RiXGEZ",
-            "Français": "https://a.co/d/7EyHZZm"
+            "🇬🇧 English": "https://a.co/d/1HQh5JM",
+            "🇪🇸 Español": "https://a.co/d/5RiXGEZ",
+            "🇫🇷 Français": "https://a.co/d/7EyHZZm"
         }
     },
     v2: {
         preview: "img/volume2.png",
         links: {
-            "English": "https://a.co/d/0HYJyAp",
-            "Español": "https://a.co/d/9GF2Ug3"
+            "🇬🇧 English": "https://a.co/d/0HYJyAp",
+            "🇪🇸 Español": "https://a.co/d/9GF2Ug3"
         }
     },
     mirrors: {

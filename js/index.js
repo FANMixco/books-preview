@@ -14,7 +14,7 @@ const translations = {
             children: "Bilingual Children’s Edition"
         },
         links: {
-            notify: "Notify me 🔔 ⇛ 🇬🇧🇪🇸🇫🇷"
+            notify: "Notify me 🔔 ⇛ 🇬🇧 🇪🇸 🇫🇷"
         }
     },
     es: {
@@ -31,7 +31,7 @@ const translations = {
             children: "Edición infantil bilingüe"
         },
         links: {
-            notify: "Avísame 🔔 ⇛ 🇬🇧🇪🇸🇫🇷"
+            notify: "Avísame 🔔 ⇛ 🇬🇧 🇪🇸 🇫🇷"
         }
     },
     fr: {
@@ -48,7 +48,7 @@ const translations = {
             children: "Édition bilingue pour enfants"
         },
         links: {
-            notify: "Me notifier 🔔 ⇛ 🇬🇧🇪🇸🇫🇷"
+            notify: "Me notifier 🔔 ⇛ 🇬🇧 🇪🇸 🇫🇷"
         }
     }
 };

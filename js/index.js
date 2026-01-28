@@ -1,7 +1,8 @@
 // --- Simple i18n (EN / ES / FR) ---
 const translations = {
     en: {
-        title: "Timeless Stories<br><small>Official Book Hub</small>",
+        title: "Timeless Stories",
+        sTitle: "Official Book Hub",
         subtitle: "Quick access to all volumes and languages",
         select: "Choose a Volume ⧨",
         qrTitle: "Scan to open this page",
@@ -15,10 +16,12 @@ const translations = {
         },
         links: {
             notify: "Notify me 🔔 ⇛ 🇬🇧 🇪🇸 🇫🇷"
-        }
+        },
+        linkCopied: "Link copied"
     },
     es: {
-        title: "Historias Eternas<br><small>Centro oficial de libros</small>",
+        title: "Historias Eternas",
+        sTitle: "Centro oficial de libros",
         subtitle: "Acceso rápido a todos los volúmenes e idiomas",
         select: "Selecciona un Volumen ⧨",
         qrTitle: "Escanea para abrir esta página",
@@ -32,10 +35,12 @@ const translations = {
         },
         links: {
             notify: "Avísame 🔔 ⇛ 🇬🇧 🇪🇸 🇫🇷"
-        }
+        },
+        linkCopied: "Enlace copiado"
     },
     fr: {
-        title: "Légendes Éternelles<br><small>Plateforme officielle des livres</small>",
+        title: "Légendes Éternelles",
+        sTitle: "Plateforme officielle des livres",
         subtitle: "Accès rapide à tous les tomes et langues",
         select: "Sélectionnez un Tome ⛛",
         qrTitle: "Scannez pour ouvrir cette page",
@@ -49,29 +54,10 @@ const translations = {
         },
         links: {
             notify: "Me notifier 🔔 ⇛ 🇬🇧 🇪🇸 🇫🇷"
-        }
+        },
+        linkCopied: "Lien copié"
     }
 };
-
-function detectLang() {
-    const lang = (navigator.language || "en").slice(0, 2);
-    return translations[lang] ? lang : "en";
-}
-
-function applyTranslations() {
-    const lang = detectLang();
-    const t = translations[lang];
-
-
-    document.getElementById("title").innerHTML = t.title;
-    document.getElementById("subtitle").innerHTML = t.subtitle;
-    document.getElementById("selectLabel").textContent = t.select;
-    document.getElementById("qrTitle").textContent = t.qrTitle;
-    document.getElementById("closeModal").textContent = t.close;
-    document.getElementById("followMe").textContent = t.followMe;
-}
-
-applyTranslations();
 
 const data = {
     v1: {
@@ -98,50 +84,76 @@ const data = {
     children: {
         preview: "img/children.png",
         links: {
-            "Afrikáans - Español": "https://prezi.com/view/3WD6lQKuilxlSFYUB6Kh",
-            "Alemán - Español": "https://prezi.com/view/f1aF8DNokAVBAQZkRFAU",
-            "Árabe - Español": "https://prezi.com/view/Y1LqND9BGYf54b6k8OrZ",
-            "Búlgaro - Español": "https://prezi.com/view/bZYnslXGNvOnueznybDY",
-            "Checo - Español": "https://prezi.com/view/cfXSdaDBv7RiN3lgxJeB",
-            "Coreano - Español": "https://prezi.com/view/uY6PMfDYv0fqpKFeEW5c",
-            "Danés - Español": "https://prezi.com/view/Nynk2PpW2Srd3ZsIEnsy",
-            "Eslovaco - Español": "https://prezi.com/view/MW7bKr1hDNgya7xuvDNm",
-            "Esloveno - Español": "https://prezi.com/view/dj0VmXcF35oyZWBWvC4K",
-            "Estoniano - Español": "https://prezi.com/view/1xdsCSW0KyFmkElLMAPl",
-            "Finés - Español": "https://prezi.com/view/sZ5XlmFWl5ayuTr7WY8w",
-            "Francés - Español": "https://prezi.com/view/k1IXa0mNdi7IbZjRgyOA/",
-            "Francés - Español (mundo árabe)": "https://prezi.com/view/Zuo6lgIMxQ9RU5oZNYl2",
-            "Griego - Español": "https://prezi.com/view/m2sEkecLYzm8EKJFnVt2",
-            "Hebreo - Español": "https://prezi.com/view/dm7HNuAcMtUJAEX5FkgY",
-            "Húngaro - Español": "https://prezi.com/view/pMzExuw0SKgo3LUzgpS6",
-            "Japonés - Español": "https://prezi.com/view/ygATteMETehlTuL45FFl",
-            "Hindi - Español": "https://prezi.com/view/UOk2rg59hfZCToQQswki",
-            "Indonesio - Español": "https://prezi.com/view/XWdBl2ncAVGOFWCi3Xrr",
-            "⭐ Inglés - Español": "https://prezi.com/view/3OA2BbhRZgysnB22bzdX",
-            "Italiano - Español": "https://prezi.com/view/j8Rj4RqvEY7k7gFxRyKU",
-            "Letón - Español": "https://prezi.com/view/zgrgHl6OUlEemd4xV01n",
-            "Lituano - Español": "https://prezi.com/view/IoxjUEj1whibCjvLJhYx",
-            "Mandarín - Español": "https://prezi.com/view/8IwA2B6lYhPwonEWAyi9",
-            "Neerlandés - Español": "https://prezi.com/view/bQerdVPWk3U5SW6acdhC",
-            "Noruego - Español": "https://prezi.com/view/Y2tUPDSaXBtjtm9MlY4r",
-            "Persa - Español": "https://prezi.com/view/n0K4Atj9gyyY9GiyY1TZ",
-            "Polaco - Español": "https://prezi.com/view/6OPP09BU4Bl8MmDHJlrg",
-            "Portugués - Español": "https://prezi.com/view/rfxpZcSzaii9XFSVq2tM",
-            "Rumano - Español": "https://prezi.com/view/onhYgaGTY1SYkZjarsH2",
-            "Ruso - Español": "https://prezi.com/view/hAQwsVmXeM7fPEj4ZgWi",
-            "Serbocroata - Español (alfabeto latino)": "https://prezi.com/view/Zo9CIFblfvnXukVQMQMv",
-            "Sueco - Español": "https://prezi.com/view/03wQSTdDdP8tEf2oUJhe",
-            "Turco - Español": "https://prezi.com/view/cCkWWOdOtlkFpiqvjtsz",
-            "Suajili - Español": "https://prezi.com/view/pgOO8udibujPhEwiwyIN",
-            "Ucraniano - Español": "https://prezi.com/view/WZzaEHSiv8HQmRGL1oFQ",
-            "Vietnamita	 - Español": "https://prezi.com/view/0JTPN1JHxuIKnS6CFpqJ",
+            "🇿🇦 Afrikáans — Español 🇸🇻": "3WD6lQKuilxlSFYUB6Kh",
+            "🇩🇪 Alemán — Español 🇸🇻": "f1aF8DNokAVBAQZkRFAU",
+            "🇸🇦 Árabe — Español 🇸🇻": "Y1LqND9BGYf54b6k8OrZ",
+            "🇧🇬 Búlgaro — Español 🇸🇻": "bZYnslXGNvOnueznybDY",
+            "🇨🇿 Checo — Español 🇸🇻": "cfXSdaDBv7RiN3lgxJeB",
+            "🇰🇷 Coreano — Español 🇸🇻": "uY6PMfDYv0fqpKFeEW5c",
+            "🇩🇰 Danés — Español 🇸🇻": "Nynk2PpW2Srd3ZsIEnsy",
+            "🇸🇰 Eslovaco — Español 🇸🇻": "MW7bKr1hDNgya7xuvDNm",
+            "🇸🇮 Esloveno — Español 🇸🇻": "dj0VmXcF35oyZWBWvC4K",
+            "🇪🇪 Estoniano — Español 🇸🇻": "1xdsCSW0KyFmkElLMAPl",
+            "🇫🇮 Finés — Español 🇸🇻": "sZ5XlmFWl5ayuTr7WY8w",
+            "🇫🇷 Francés — Español 🇸🇻": "k1IXa0mNdi7IbZjRgyOA/",
+            "🇫🇷 Francés — Español 🇸🇻 (mundo árabe 🕌)": "Zuo6lgIMxQ9RU5oZNYl2",
+            "🇬🇷 Griego — Español 🇸🇻": "m2sEkecLYzm8EKJFnVt2",
+            "🇮🇱 Hebreo — Español 🇸🇻": "dm7HNuAcMtUJAEX5FkgY",
+            "🇭🇺 Húngaro — Español 🇸🇻": "pMzExuw0SKgo3LUzgpS6",
+            "🇯🇵 Japonés — Español 🇸🇻": "ygATteMETehlTuL45FFl",
+            "🇮🇳 Hindi — Español 🇸🇻": "UOk2rg59hfZCToQQswki",
+            "🇮🇩 Indonesio — Español 🇸🇻": "XWdBl2ncAVGOFWCi3Xrr",
+            "⭐ • 🇬🇧 Inglés — Español 🇸🇻": "3OA2BbhRZgysnB22bzdX",
+            "🇮🇹 Italiano — Español 🇸🇻": "j8Rj4RqvEY7k7gFxRyKU",
+            "🇱🇻 Letón — Español 🇸🇻": "zgrgHl6OUlEemd4xV01n",
+            "🇱🇹 Lituano — Español 🇸🇻": "IoxjUEj1whibCjvLJhYx",
+            "🇨🇳 Mandarín — Español 🇸🇻": "8IwA2B6lYhPwonEWAyi9",
+            "🇳🇱 Neerlandés — Español 🇸🇻": "bQerdVPWk3U5SW6acdhC",
+            "🇳🇴 Noruego — Español 🇸🇻": "Y2tUPDSaXBtjtm9MlY4r",
+            "🇮🇷 Persa — Español 🇸🇻": "n0K4Atj9gyyY9GiyY1TZ",
+            "🇵🇹 Polaco — Español 🇸🇻": "6OPP09BU4Bl8MmDHJlrg",
+            "🇵🇹 Portugués — Español 🇸🇻": "rfxpZcSzaii9XFSVq2tM",
+            "🇷🇴 Rumano — Español 🇸🇻": "onhYgaGTY1SYkZjarsH2",
+            "🇷🇺 Ruso — Español 🇸🇻": "hAQwsVmXeM7fPEj4ZgWi",
+            "🇭🇷 Serbocroata — Español 🇸🇻 (alfabeto latino)": "Zo9CIFblfvnXukVQMQMv",
+            "🇸🇪 Sueco — Español 🇸🇻": "03wQSTdDdP8tEf2oUJhe",
+            "🇹🇷 Turco — Español 🇸🇻": "cCkWWOdOtlkFpiqvjtsz",
+            "🇹🇿 Suajili — Español 🇸🇻": "pgOO8udibujPhEwiwyIN",
+            "🇺🇦 Ucraniano — Español 🇸🇻": "WZzaEHSiv8HQmRGL1oFQ",
+            "🇻🇳 Vietnamita	— Español 🇸🇻": "0JTPN1JHxuIKnS6CFpqJ",
         }
     }
 };
 
+const PREZI_BASE = "https://prezi.com/view/";
 const select = document.getElementById("volumeSelect");
 const linksContainer = document.getElementById("linksContainer");
 const previewImage = document.getElementById("previewImage");
+const qrButton = document.getElementById("qrButton");
+const qrModal = document.getElementById("qrModal");
+const closeModal = document.getElementById("closeModal");
+const qrImage = document.getElementById("qrImage");
+const shareButton = document.getElementById("shareButton");
+
+function detectLang() {
+    const lang = (navigator.language || "en").slice(0, 2);
+    return translations[lang] ? lang : "en";
+}
+
+function applyTranslations() {
+    const lang = detectLang();
+    const t = translations[lang];
+
+
+    document.getElementById("title").innerHTML = `${t.title}<br><small>${t.sTitle}</small>`;
+    document.getElementById("subtitle").innerHTML = t.subtitle;
+    document.getElementById("selectLabel").textContent = t.select;
+    document.getElementById("qrTitle").textContent = t.qrTitle;
+    document.getElementById("closeModal").textContent = t.close;
+    document.getElementById("followMe").textContent = t.followMe;
+}
+
+applyTranslations();
 
 function renderVolume(name) {
   const volume = data[name];
@@ -155,7 +167,11 @@ function renderVolume(name) {
   Object.entries(volume.links).forEach(([key, url]) => {
     const a = document.createElement("a");
     a.className = "link-btn";
-    a.href = url;
+    const fullUrl = name === "children" && !url.startsWith("http")
+        ? PREZI_BASE + url
+        : url;
+
+    a.href = fullUrl;
     a.target = "_blank";
 
     // Use translated label instead of raw key
@@ -190,11 +206,6 @@ select.addEventListener("change", (e) => {
     renderVolume(e.target.value);
 });
 
-const qrButton = document.getElementById("qrButton");
-const qrModal = document.getElementById("qrModal");
-const closeModal = document.getElementById("closeModal");
-const qrImage = document.getElementById("qrImage");
-
 function generateQR() {
     const url = window.location.href;
     qrImage.src = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(url)}`;
@@ -221,8 +232,6 @@ qrModal.addEventListener("click", (e) => {
 loadVolumes();
 renderVolume(select.value);
 
-const shareButton = document.getElementById("shareButton");
-
 shareButton.addEventListener("click", async () => {
   const url = window.location.href;
   const lang = detectLang();
@@ -232,7 +241,7 @@ shareButton.addEventListener("click", async () => {
   if (navigator.share) {
     try {
       await navigator.share({
-        title: "Timeless Stories",
+        title: t.title,
         text: t.subtitle,
         url
       });
@@ -243,11 +252,7 @@ shareButton.addEventListener("click", async () => {
     // Desktop fallback: copy to clipboard
     await navigator.clipboard.writeText(url);
     alert(
-      lang === "es"
-        ? "Enlace copiado"
-        : lang === "fr"
-        ? "Lien copié"
-        : "Link copied"
+      t.linkCopied
     );
   }
 });

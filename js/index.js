@@ -111,7 +111,7 @@ const data = {
             "🇳🇱 Neerlandés — Español 🇸🇻": "bQerdVPWk3U5SW6acdhC",
             "🇳🇴 Noruego — Español 🇸🇻": "Y2tUPDSaXBtjtm9MlY4r",
             "🇮🇷 Persa — Español 🇸🇻": "n0K4Atj9gyyY9GiyY1TZ",
-            "🇵🇹 Polaco — Español 🇸🇻": "6OPP09BU4Bl8MmDHJlrg",
+            "🇵🇱 Polaco — Español 🇸🇻": "6OPP09BU4Bl8MmDHJlrg",
             "🇵🇹 Portugués — Español 🇸🇻": "rfxpZcSzaii9XFSVq2tM",
             "🇷🇴 Rumano — Español 🇸🇻": "onhYgaGTY1SYkZjarsH2",
             "🇷🇺 Ruso — Español 🇸🇻": "hAQwsVmXeM7fPEj4ZgWi",

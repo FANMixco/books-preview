@@ -183,3 +183,19 @@ select {
     grid-template-columns: 1fr 1fr;
     gap: 1rem; /* optional spacing between columns */
 }
+
+.footer a:link {
+  color: #64FFDA;
+}
+
+.footer a:visited {
+  color: #1DE9B6;
+}
+
+.footer a:hover {
+  color: #A7FFEB;
+}
+
+.footer a:active {
+  color: #00BFA5;
+}

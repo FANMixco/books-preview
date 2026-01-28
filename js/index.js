@@ -4,7 +4,7 @@ const translations = {
         title: "Timeless Stories",
         sTitle: "Official Book Hub",
         subtitle: "Quick access to all volumes and languages",
-        select: "Choose a Volume ⧨",
+        select: "Choose a Volume",
         qrTitle: "Scan to open this page",
         close: "Close",
         followMe: "Follow me",
@@ -23,7 +23,7 @@ const translations = {
         title: "Historias Eternas",
         sTitle: "Centro oficial de libros",
         subtitle: "Acceso rápido a todos los volúmenes e idiomas",
-        select: "Selecciona un Volumen ⧨",
+        select: "Selecciona un Volumen",
         qrTitle: "Escanea para abrir esta página",
         close: "Cerrar",
         followMe: "Sígueme",
@@ -42,7 +42,7 @@ const translations = {
         title: "Légendes Éternelles",
         sTitle: "Plateforme officielle des livres",
         subtitle: "Accès rapide à tous les tomes et langues",
-        select: "Sélectionnez un Tome ⛛",
+        select: "Sélectionnez un Tome",
         qrTitle: "Scannez pour ouvrir cette page",
         close: "Fermer",
         followMe: "Suivez-moi",
@@ -61,7 +61,7 @@ const translations = {
 
 const data = {
     v1: {
-        preview: "img/volume1.png",
+        preview: "volume1",
         links: {
             "🇬🇧 English": "https://a.co/d/1HQh5JM",
             "🇪🇸 Español": "https://a.co/d/5RiXGEZ",
@@ -69,14 +69,14 @@ const data = {
         }
     },
     v2: {
-        preview: "img/volume2.png",
+        preview: "volume2",
         links: {
             "🇬🇧 English": "https://a.co/d/0HYJyAp",
             "🇪🇸 Español": "https://a.co/d/9GF2Ug3"
         }
     },
     mirrors: {
-        preview: "img/mirrors.png",
+        preview: "mirrors",
         links: {
             notify: "https://amzn.to/3YXGR5W"
         }
@@ -180,7 +180,7 @@ function renderVolume(name) {
     linksContainer.appendChild(a);
   });
 
-  previewImage.src = volume.preview;
+  previewImage.src = `img/${volume.preview}.png`;
 }
 
 function loadVolumes() {

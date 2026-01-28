@@ -82,7 +82,7 @@ const data = {
         }
     },
     children: {
-        preview: "img/children.png",
+        preview: "children",
         links: {
             "🇿🇦 Afrikáans — Español 🇸🇻": "3WD6lQKuilxlSFYUB6Kh",
             "🇩🇪 Alemán — Español 🇸🇻": "f1aF8DNokAVBAQZkRFAU",

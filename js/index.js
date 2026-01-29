@@ -125,6 +125,26 @@ const data = {
     }
 };
 
+const PREVIEW_OVERRIDES = {
+  v1: {
+    en: "volume1",
+    es: "volume1_es",
+    fr: "volume1_fr"
+  },
+  v2: {
+    es: "volume2_es"
+  },
+  mirrors: {
+    en: "mirrors",
+    es: "mirrors_es",
+    fr: "mirrors_fr"
+  },
+  children: {
+    fr: "children_fr"
+    // en + es fall back to "children"
+  }
+};
+
 const PREZI_BASE = "https://prezi.com/view/";
 const select = document.getElementById("volumeSelect");
 const linksContainer = document.getElementById("linksContainer");
@@ -179,7 +199,10 @@ function renderVolume(name) {
         linksContainer.appendChild(a);
     });
 
-    previewImage.src = `img/${volume.preview}.webp`;
+    const override = PREVIEW_OVERRIDES[name]?.[lang] || volume.preview;
+
+    previewImage.src = `img/${override}.webp`;
+    //previewImage.src = `img/${volume.preview}.webp`;
 }
 
 function loadVolumes() {

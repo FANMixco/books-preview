@@ -116,11 +116,11 @@ const data = {
             "🇷🇴 Rumano — Español 🇸🇻": "onhYgaGTY1SYkZjarsH2",
             "🇷🇺 Ruso — Español 🇸🇻": "hAQwsVmXeM7fPEj4ZgWi",
             "🇭🇷 Serbocroata — Español 🇸🇻 (alfabeto latino)": "Zo9CIFblfvnXukVQMQMv",
+            "🇹🇿 Suajili — Español 🇸🇻": "pgOO8udibujPhEwiwyIN",
             "🇸🇪 Sueco — Español 🇸🇻": "03wQSTdDdP8tEf2oUJhe",
             "🇹🇷 Turco — Español 🇸🇻": "cCkWWOdOtlkFpiqvjtsz",
-            "🇹🇿 Suajili — Español 🇸🇻": "pgOO8udibujPhEwiwyIN",
             "🇺🇦 Ucraniano — Español 🇸🇻": "WZzaEHSiv8HQmRGL1oFQ",
-            "🇻🇳 Vietnamita	— Español 🇸🇻": "0JTPN1JHxuIKnS6CFpqJ",
+            "🇻🇳 Vietnamita — Español 🇸🇻": "0JTPN1JHxuIKnS6CFpqJ",
         }
     }
 };
@@ -144,7 +144,6 @@ function applyTranslations() {
     const lang = detectLang();
     const t = translations[lang];
 
-
     document.getElementById("title").innerHTML = `${t.title}<br><small>${t.sTitle}</small>`;
     document.getElementById("subtitle").innerHTML = t.subtitle;
     document.getElementById("selectLabel").textContent = t.select;
@@ -156,31 +155,31 @@ function applyTranslations() {
 applyTranslations();
 
 function renderVolume(name) {
-  const volume = data[name];
+    const volume = data[name];
 
-  const lang = detectLang();
-  const t = translations[lang] || translations.en;
-  const linkLabels = t.links || translations.en.links || {};
+    const lang = detectLang();
+    const t = translations[lang] || translations.en;
+    const linkLabels = t.links || translations.en.links || {};
 
-  linksContainer.innerHTML = "";
+    linksContainer.innerHTML = "";
 
-  Object.entries(volume.links).forEach(([key, url]) => {
-    const a = document.createElement("a");
-    a.className = "link-btn";
-    const fullUrl = name === "children" && !url.startsWith("http")
-        ? PREZI_BASE + url
-        : url;
+    Object.entries(volume.links).forEach(([key, url]) => {
+        const a = document.createElement("a");
+        a.className = "link-btn";
+        const fullUrl = name === "children" && !url.startsWith("http")
+            ? PREZI_BASE + url
+            : url;
 
-    a.href = fullUrl;
-    a.target = "_blank";
+        a.href = fullUrl;
+        a.target = "_blank";
 
-    // Use translated label instead of raw key
-    a.textContent = linkLabels[key] || key;
+        // Use translated label instead of raw key
+        a.textContent = linkLabels[key] || key;
 
-    linksContainer.appendChild(a);
-  });
+        linksContainer.appendChild(a);
+    });
 
-  previewImage.src = `img/${volume.preview}.webp`;
+    previewImage.src = `img/${volume.preview}.webp`;
 }
 
 function loadVolumes() {
@@ -233,26 +232,26 @@ loadVolumes();
 renderVolume(select.value);
 
 shareButton.addEventListener("click", async () => {
-  const url = window.location.href;
-  const lang = detectLang();
-  const t = translations[lang] || translations.en;
+    const url = window.location.href;
+    const lang = detectLang();
+    const t = translations[lang] || translations.en;
 
-  // Mobile native share
-  if (navigator.share) {
-    try {
-      await navigator.share({
-        title: t.title,
-        text: t.subtitle,
-        url
-      });
-    } catch (e) {
-      // user cancelled — do nothing
+    // Mobile native share
+    if (navigator.share) {
+        try {
+            await navigator.share({
+                title: t.title,
+                text: t.subtitle,
+                url
+            });
+        } catch (e) {
+            // user cancelled — do nothing
+        }
+    } else {
+        // Desktop fallback: copy to clipboard
+        await navigator.clipboard.writeText(url);
+        alert(
+            t.linkCopied
+        );
     }
-  } else {
-    // Desktop fallback: copy to clipboard
-    await navigator.clipboard.writeText(url);
-    alert(
-      t.linkCopied
-    );
-  }
 });

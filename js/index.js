@@ -180,7 +180,7 @@ function renderVolume(name) {
     linksContainer.appendChild(a);
   });
 
-  previewImage.src = `img/${volume.preview}.png`;
+  previewImage.src = `img/${volume.preview}.webp`;
 }
 
 function loadVolumes() {

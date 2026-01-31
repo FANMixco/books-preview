@@ -31,6 +31,12 @@ body {
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
 }
 
+@media (max-width: 480px) and (orientation: portrait) {
+  .app {
+    padding-top: 0;
+  }
+}
+
 h1 {
     font-size: 1.5rem;
     margin-bottom: 0.5rem;

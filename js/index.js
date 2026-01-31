@@ -209,10 +209,12 @@ function renderVolume(name) {
       e.preventDefault();
       e.stopPropagation();
 
+      const shareTitle = getShareTitle(a.textContent);
+
       if (navigator.share) {
         try {
           await navigator.share({
-            title: t.title,
+            title: shareTitle,
             text: a.textContent,
             url: fullUrl
           });
@@ -232,6 +234,17 @@ function renderVolume(name) {
 
   const override = PREVIEW_OVERRIDES[name]?.[lang] || volume.preview;
   previewImage.src = `img/${override}.webp`;
+
+  function getShareTitle(linkLabel) {
+    const lang = detectLang();
+    const t = translations[lang] || translations.en;
+
+    const volumeSelect = document.getElementById("volumeSelect");
+    const volumeText =
+        volumeSelect.options[volumeSelect.selectedIndex]?.text || "";
+
+    return `${t.title} — ${volumeText} (${linkLabel})`;
+    }
 }
 
 function showToast(text) {

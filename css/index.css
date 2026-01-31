@@ -68,8 +68,8 @@ select {
 
 select:focus,
 select:focus-visible {
-  outline: none;
-  box-shadow: none;
+    outline: none;
+    box-shadow: none;
 }
 
 #selectLabel {
@@ -187,21 +187,85 @@ select:focus-visible {
 .row {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1rem; /* optional spacing between columns */
+    gap: 1rem;
+    /* optional spacing between columns */
 }
 
 .footer a:link {
-  color: #64FFDA;
+    color: #64FFDA;
 }
 
 .footer a:visited {
-  color: #1DE9B6;
+    color: #1DE9B6;
 }
 
 .footer a:hover {
-  color: #A7FFEB;
+    color: #A7FFEB;
 }
 
 .footer a:active {
-  color: #00BFA5;
+    color: #00BFA5;
+}
+
+.link-row {
+    position: relative;
+}
+
+.link-btn {
+    padding-right: 3rem;
+    /* space for ellipsis */
+}
+
+/* Vertical ellipsis button */
+.share-mini {
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    color: var(--muted);
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.share-mini:hover {
+    color: var(--accent);
+}
+
+/* Tiny toast */
+.toast {
+    position: fixed;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--card);
+    border: 1px solid #1e293b;
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    font-size: 0.8rem;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    z-index: 2000;
+}
+
+.toast.show {
+    opacity: 1;
+}
+
+.qr-floating {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    background: #fff;
+    padding: 0.5rem;
+    border-radius: 0.75rem;
+    display: none;
+    z-index: 1500;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+.qr-floating img {
+    width: 120px;
+    height: 120px;
 }

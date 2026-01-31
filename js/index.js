@@ -154,6 +154,8 @@ const qrModal = document.getElementById("qrModal");
 const closeModal = document.getElementById("closeModal");
 const qrImage = document.getElementById("qrImage");
 const shareButton = document.getElementById("shareButton");
+const qrFloating = document.getElementById("qrFloating");
+const qrFloatingImage = document.getElementById("qrFloatingImage");
 
 function detectLang() {
     const lang = (navigator.language || "en").slice(0, 2);
@@ -175,35 +177,100 @@ function applyTranslations() {
 applyTranslations();
 
 function renderVolume(name) {
-    const volume = data[name];
+  const volume = data[name];
+  const lang = detectLang();
+  const t = translations[lang] || translations.en;
+  const linkLabels = t.links || translations.en.links || {};
 
-    const lang = detectLang();
-    const t = translations[lang] || translations.en;
-    const linkLabels = t.links || translations.en.links || {};
+  linksContainer.innerHTML = "";
 
-    linksContainer.innerHTML = "";
+  Object.entries(volume.links).forEach(([key, url]) => {
+    const row = document.createElement("div");
+    row.className = "link-row";
 
-    Object.entries(volume.links).forEach(([key, url]) => {
-        const a = document.createElement("a");
-        a.className = "link-btn";
-        const fullUrl = name === "children" && !url.startsWith("http")
-            ? PREZI_BASE + url
-            : url;
+    const a = document.createElement("a");
+    a.className = "link-btn";
 
-        a.href = fullUrl;
-        a.target = "_blank";
+    const fullUrl =
+      name === "children" && !url.startsWith("http")
+        ? PREZI_BASE + url
+        : url;
 
-        // Use translated label instead of raw key
-        a.textContent = linkLabels[key] || key;
+    a.href = fullUrl;
+    a.target = "_blank";
+    a.textContent = linkLabels[key] || key;
 
-        linksContainer.appendChild(a);
+    const shareBtn = document.createElement("button");
+    shareBtn.className = "share-mini";
+    shareBtn.innerHTML = "⋮";
+    shareBtn.setAttribute("aria-label", "Share this link");
+
+    shareBtn.addEventListener("click", async (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: t.title,
+            text: a.textContent,
+            url: fullUrl
+          });
+        } catch {
+          // user cancelled
+        }
+      } else {
+        await navigator.clipboard.writeText(fullUrl);
+        showToast(t.linkCopied || "Link copied");
+      }
     });
 
-    const override = PREVIEW_OVERRIDES[name]?.[lang] || volume.preview;
+    row.appendChild(a);
+    row.appendChild(shareBtn);
+    linksContainer.appendChild(row);
+  });
 
-    previewImage.src = `img/${override}.webp`;
-    //previewImage.src = `img/${volume.preview}.webp`;
+  const override = PREVIEW_OVERRIDES[name]?.[lang] || volume.preview;
+  previewImage.src = `img/${override}.webp`;
 }
+
+function showToast(text) {
+  let toast = document.querySelector(".toast");
+
+  if (!toast) {
+    toast = document.createElement("div");
+    toast.className = "toast";
+    document.body.appendChild(toast);
+  }
+
+  toast.textContent = text;
+  toast.classList.add("show");
+
+  setTimeout(() => {
+    toast.classList.remove("show");
+  }, 1500);
+}
+
+function updateQRVisibility() {
+  const isLandscape = window.matchMedia("(orientation: landscape)").matches;
+  const isWide = window.innerWidth >= 768;
+
+  if (isLandscape && isWide) {
+    const url = window.location.href;
+    const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(url)}`;
+
+    qrFloatingImage.src = qrUrl;
+    qrFloating.style.display = "block";
+    qrButton.style.display = "none";
+  } else {
+    qrFloating.style.display = "none";
+    qrButton.style.display = "inline-block";
+  }
+}
+
+window.addEventListener("resize", updateQRVisibility);
+window.addEventListener("orientationchange", updateQRVisibility);
+updateQRVisibility();
 
 function loadVolumes() {
     const lang = detectLang();

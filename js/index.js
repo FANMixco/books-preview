@@ -243,7 +243,7 @@ function renderVolume(name) {
     const volumeText =
         volumeSelect.options[volumeSelect.selectedIndex]?.text || "";
 
-    return `${t.title} — ${volumeText} (${linkLabel})`;
+    return `${t.title} — ${volumeText}`;
     }
 }
 

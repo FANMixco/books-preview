@@ -35,16 +35,22 @@
     <meta property="twitter:description"
         content="A series of books written by Federico Navarrete. They represent the largest collection of Salvadoran oral stories in English.">
     <meta property="twitter:image" content="https://books.federiconavarrete.com/img/preview.jpg">
+
+    <link rel="stylesheet" href="css/icon-moon.min.css">
 </head>
 
 <body>
     <div class="app">
         <div class="row">
             <div class="col1">
-                <button id="qrButton" class="share-fab" aria-label="Show QR Code">⛶</button>
+                <button id="qrButton" class="share-fab" aria-label="Show QR Code">
+                    <span class="icon-scan-helper"></span>
+                </button>
             </div>
             <div class="col2">
-                <button id="shareButton" class="share-fab" aria-label="Share link">➦</button>
+                <button id="shareButton" class="share-fab" aria-label="Share link">
+                    <span id="shareIcon"></span>
+                </button>
             </div>
         </div>
         <h1 id="title"></h1>

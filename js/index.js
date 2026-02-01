@@ -333,3 +333,23 @@ async function shareInfo(title, context, url, trans = null) {
         showToast(trans.linkCopied || "Link copied");
     }
 }
+
+(function () {
+  const btn = document.getElementById("shareIcon");
+  if (!btn) return;
+
+  const ua = navigator.userAgent.toLowerCase();
+  let iconClass = "icon-share"; // default (desktop / unknown)
+
+  if (/iphone|ipad|ipod|mac os/.test(ua)) {
+    iconClass = "icon-share-ios";
+  } else if (/android/.test(ua)) {
+    iconClass = "icon-share-android";
+  }
+
+  // Remove any previous icon classes
+  btn.classList.remove("icon-share", "icon-share-ios", "icon-share-android");
+
+  // Add the detected one
+  btn.classList.add(iconClass);
+})();

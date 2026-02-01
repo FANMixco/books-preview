@@ -176,11 +176,11 @@ select:focus-visible {
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
 }
 
-.div1 {
+.col1 {
     height: 100%;
 }
 
-.div2 {
+.col2 {
     text-align: right;
 }
 
@@ -227,6 +227,7 @@ select:focus-visible {
     color: var(--muted);
     font-size: 1.2rem;
     cursor: pointer;
+    font-weight: bold;
 }
 
 .share-mini:hover {

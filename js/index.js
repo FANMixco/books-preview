@@ -209,24 +209,9 @@ function renderVolume(name) {
             e.preventDefault();
             e.stopPropagation();
 
-            const shareTitle = getShareTitle(a.textContent);
+            const shareTitle = getShareTitle(t);
 
             shareInfo(shareTitle, a.textContent, fullUrl, t);
-
-            /*if (navigator.share) {
-                try {
-                    await navigator.share({
-                        title: shareTitle,
-                        text: a.textContent,
-                        url: fullUrl
-                    });
-                } catch {
-                    // user cancelled
-                }
-            } else {
-                await navigator.clipboard.writeText(fullUrl);
-                showToast(t.linkCopied || "Link copied");
-            }*/
         });
 
         row.appendChild(a);
@@ -237,10 +222,7 @@ function renderVolume(name) {
     const override = PREVIEW_OVERRIDES[name]?.[lang] || volume.preview;
     previewImage.src = `img/${override}.webp`;
 
-    function getShareTitle(linkLabel) {
-        const lang = detectLang();
-        const t = translations[lang] || translations.en;
-
+    function getShareTitle(t) {
         const volumeSelect = document.getElementById("volumeSelect");
         const volumeText =
             volumeSelect.options[volumeSelect.selectedIndex]?.text || "";
@@ -342,32 +324,9 @@ shareButton.addEventListener("click", async () => {
     const t = translations[lang] || translations.en;
 
     shareInfo(t.title, t.subtitle, url, t);
-
-    // Mobile native share
-    /*if (navigator.share) {
-        try {
-            await navigator.share({
-                title: t.title,
-                text: t.subtitle,
-                url
-            });
-        } catch (e) {
-            // user cancelled — do nothing
-        }
-    } else {
-        // Desktop fallback: copy to clipboard
-        await navigator.clipboard.writeText(url);
-        alert(
-            t.linkCopied
-        );
-    }*/
 });
 
 async function shareInfo(title, context, url, trans = null) {
-    //const url = window.location.href;
-    //const lang = detectLang();
-    //const t = translations[lang] || translations.en;
-
     if (navigator.share) {
         try {
             await navigator.share({

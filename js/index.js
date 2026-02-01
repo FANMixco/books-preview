@@ -126,23 +126,23 @@ const data = {
 };
 
 const PREVIEW_OVERRIDES = {
-  v1: {
-    en: "volume1",
-    es: "volume1_es",
-    fr: "volume1_fr"
-  },
-  v2: {
-    es: "volume2_es"
-  },
-  mirrors: {
-    en: "mirrors",
-    es: "mirrors_es",
-    fr: "mirrors_fr"
-  },
-  children: {
-    fr: "children_fr"
-    // en + es fall back to "children"
-  }
+    v1: {
+        en: "volume1",
+        es: "volume1_es",
+        fr: "volume1_fr"
+    },
+    v2: {
+        es: "volume2_es"
+    },
+    mirrors: {
+        en: "mirrors",
+        es: "mirrors_es",
+        fr: "mirrors_fr"
+    },
+    children: {
+        fr: "children_fr"
+        // en + es fall back to "children"
+    }
 };
 
 const PREZI_BASE = "https://prezi.com/view/";
@@ -177,108 +177,110 @@ function applyTranslations() {
 applyTranslations();
 
 function renderVolume(name) {
-  const volume = data[name];
-  const lang = detectLang();
-  const t = translations[lang] || translations.en;
-  const linkLabels = t.links || translations.en.links || {};
-
-  linksContainer.innerHTML = "";
-
-  Object.entries(volume.links).forEach(([key, url]) => {
-    const row = document.createElement("div");
-    row.className = "link-row";
-
-    const a = document.createElement("a");
-    a.className = "link-btn";
-
-    const fullUrl =
-      name === "children" && !url.startsWith("http")
-        ? PREZI_BASE + url
-        : url;
-
-    a.href = fullUrl;
-    a.target = "_blank";
-    a.textContent = linkLabels[key] || key;
-
-    const shareBtn = document.createElement("button");
-    shareBtn.className = "share-mini";
-    shareBtn.innerHTML = "⋮";
-    shareBtn.setAttribute("aria-label", "Share this link");
-
-    shareBtn.addEventListener("click", async (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-
-      const shareTitle = getShareTitle(a.textContent);
-
-      if (navigator.share) {
-        try {
-          await navigator.share({
-            title: shareTitle,
-            text: a.textContent,
-            url: fullUrl
-          });
-        } catch {
-          // user cancelled
-        }
-      } else {
-        await navigator.clipboard.writeText(fullUrl);
-        showToast(t.linkCopied || "Link copied");
-      }
-    });
-
-    row.appendChild(a);
-    row.appendChild(shareBtn);
-    linksContainer.appendChild(row);
-  });
-
-  const override = PREVIEW_OVERRIDES[name]?.[lang] || volume.preview;
-  previewImage.src = `img/${override}.webp`;
-
-  function getShareTitle(linkLabel) {
+    const volume = data[name];
     const lang = detectLang();
     const t = translations[lang] || translations.en;
+    const linkLabels = t.links || translations.en.links || {};
 
-    const volumeSelect = document.getElementById("volumeSelect");
-    const volumeText =
-        volumeSelect.options[volumeSelect.selectedIndex]?.text || "";
+    linksContainer.innerHTML = "";
 
-    return `${t.title} — ${volumeText}`;
+    Object.entries(volume.links).forEach(([key, url]) => {
+        const row = document.createElement("div");
+        row.className = "link-row";
+
+        const a = document.createElement("a");
+        a.className = "link-btn";
+
+        const fullUrl =
+            name === "children" && !url.startsWith("http")
+                ? PREZI_BASE + url
+                : url;
+
+        a.href = fullUrl;
+        a.target = "_blank";
+        a.textContent = linkLabels[key] || key;
+
+        const shareBtn = document.createElement("button");
+        shareBtn.className = "share-mini";
+        shareBtn.innerHTML = "⋮";
+        shareBtn.setAttribute("aria-label", "Share this link");
+
+        shareBtn.addEventListener("click", async (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+
+            const shareTitle = getShareTitle(a.textContent);
+
+            shareInfo(shareTitle, a.textContent, fullUrl, t);
+
+            /*if (navigator.share) {
+                try {
+                    await navigator.share({
+                        title: shareTitle,
+                        text: a.textContent,
+                        url: fullUrl
+                    });
+                } catch {
+                    // user cancelled
+                }
+            } else {
+                await navigator.clipboard.writeText(fullUrl);
+                showToast(t.linkCopied || "Link copied");
+            }*/
+        });
+
+        row.appendChild(a);
+        row.appendChild(shareBtn);
+        linksContainer.appendChild(row);
+    });
+
+    const override = PREVIEW_OVERRIDES[name]?.[lang] || volume.preview;
+    previewImage.src = `img/${override}.webp`;
+
+    function getShareTitle(linkLabel) {
+        const lang = detectLang();
+        const t = translations[lang] || translations.en;
+
+        const volumeSelect = document.getElementById("volumeSelect");
+        const volumeText =
+            volumeSelect.options[volumeSelect.selectedIndex]?.text || "";
+
+        return `${t.title} — ${volumeText}`;
     }
 }
 
 function showToast(text) {
-  let toast = document.querySelector(".toast");
+    let toast = document.querySelector(".toast");
 
-  if (!toast) {
-    toast = document.createElement("div");
-    toast.className = "toast";
-    document.body.appendChild(toast);
-  }
+    if (!toast) {
+        toast = document.createElement("div");
+        toast.className = "toast";
+        document.body.appendChild(toast);
+    }
 
-  toast.textContent = text;
-  toast.classList.add("show");
+    toast.textContent = text;
+    toast.classList.add("show");
 
-  setTimeout(() => {
-    toast.classList.remove("show");
-  }, 1500);
+    setTimeout(() => {
+        toast.classList.remove("show");
+    }, 1500);
 }
 
 function updateQRVisibility() {
-  const isLandscape = window.matchMedia("(orientation: landscape)").matches;
-  const isWide = window.innerWidth >= 768;
+    const isLandscape = window.matchMedia("(orientation: landscape)").matches;
+    const isWide = window.innerWidth >= 768;
 
-  if (isLandscape && isWide) {
-    const url = window.location.href;
-    const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(url)}`;
+    if (isLandscape && isWide) {
+        const url = window.location.href;
+        const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(url)}`;
 
-    qrFloatingImage.src = qrUrl;
-    qrFloating.style.display = "block";
-    qrButton.style.display = "none";
-  } else {
-    qrFloating.style.display = "none";
-    qrButton.style.display = "inline-block";
-  }
+        qrFloatingImage.src = qrUrl;
+        qrFloating.style.display = "block";
+        qrButton.style.display = "none";
+    } else {
+        qrFloating.style.display = "none";
+        qrButton.style.display = "inline-block";
+    }
 }
 
 window.addEventListener("resize", updateQRVisibility);
@@ -339,8 +341,10 @@ shareButton.addEventListener("click", async () => {
     const lang = detectLang();
     const t = translations[lang] || translations.en;
 
+    shareInfo(t.title, t.subtitle, url, t);
+
     // Mobile native share
-    if (navigator.share) {
+    /*if (navigator.share) {
         try {
             await navigator.share({
                 title: t.title,
@@ -356,5 +360,26 @@ shareButton.addEventListener("click", async () => {
         alert(
             t.linkCopied
         );
-    }
+    }*/
 });
+
+async function shareInfo(title, context, url, trans = null) {
+    //const url = window.location.href;
+    //const lang = detectLang();
+    //const t = translations[lang] || translations.en;
+
+    if (navigator.share) {
+        try {
+            await navigator.share({
+                title: title,
+                text: context,
+                url: url
+            });
+        } catch {
+            // user cancelled
+        }
+    } else {
+        await navigator.clipboard.writeText(fullUrl);
+        showToast(trans.linkCopied || "Link copied");
+    }
+}

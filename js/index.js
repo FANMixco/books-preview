@@ -172,6 +172,7 @@ function applyTranslations() {
     document.getElementById("qrTitle").textContent = t.qrTitle;
     document.getElementById("closeModal").textContent = t.close;
     document.getElementById("followMe").textContent = t.followMe;
+    document.getElementById("qrText").textContent = t.qrTitle;
 }
 
 applyTranslations();
@@ -253,10 +254,6 @@ function updateQRVisibility() {
     const isWide = window.innerWidth >= 768;
 
     if (isLandscape && isWide) {
-        const url = window.location.href;
-        const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(url)}`;
-
-        qrFloatingImage.src = qrUrl;
         qrFloating.style.display = "block";
         qrButton.style.display = "none";
     } else {
@@ -292,14 +289,8 @@ select.addEventListener("change", (e) => {
     renderVolume(e.target.value);
 });
 
-function generateQR() {
-    const url = window.location.href;
-    qrImage.src = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(url)}`;
-}
-
 qrButton.addEventListener("click", (e) => {
     e.preventDefault();
-    generateQR();
     qrModal.style.display = "flex";
 });
 

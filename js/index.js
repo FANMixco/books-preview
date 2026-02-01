@@ -258,7 +258,7 @@ function updateQRVisibility() {
         qrButton.style.display = "none";
     } else {
         qrFloating.style.display = "none";
-        qrButton.style.display = "inline-block";
+        qrButton.style.display = "inline-flex";
     }
 }
 

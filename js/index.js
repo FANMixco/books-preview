@@ -15,9 +15,10 @@ const translations = {
             children: "Bilingual Children’s Edition"
         },
         links: {
-            notify: "Notify me 🔔 ⇛ 🇬🇧 🇪🇸 🇫🇷"
+            notify: "Notify me 🔔 ⇛ 🇬🇧 🇪🇸"
         },
-        linkCopied: "Link copied"
+        linkCopied: "Link copied",
+        sBridges: "Building bridges across cultures."
     },
     es: {
         title: "Historias Eternas",
@@ -34,9 +35,10 @@ const translations = {
             children: "Edición infantil bilingüe"
         },
         links: {
-            notify: "Avísame 🔔 ⇛ 🇬🇧 🇪🇸 🇫🇷"
+            notify: "Avísame 🔔 ⇛ 🇬🇧 🇪🇸"
         },
-        linkCopied: "Enlace copiado"
+        linkCopied: "Enlace copiado",
+        sBridges: "Construyendo puentes entre culturas."
     },
     fr: {
         title: "Légendes Éternelles",
@@ -53,9 +55,10 @@ const translations = {
             children: "Édition bilingue pour enfants"
         },
         links: {
-            notify: "Me notifier 🔔 ⇛ 🇬🇧 🇪🇸 🇫🇷"
+            notify: "Me notifier 🔔 ⇛ 🇬🇧 🇪🇸"
         },
-        linkCopied: "Lien copié"
+        linkCopied: "Lien copié",
+        sBridges: "Construire des ponts entre les cultures."
     }
 };
 
@@ -136,8 +139,7 @@ const PREVIEW_OVERRIDES = {
     },
     mirrors: {
         en: "mirrors",
-        es: "mirrors_es",
-        fr: "mirrors_fr"
+        es: "mirrors_es"
     },
     children: {
         fr: "children_fr"
@@ -146,16 +148,16 @@ const PREVIEW_OVERRIDES = {
 };
 
 const PREZI_BASE = "https://prezi.com/view/";
-const select = document.getElementById("volumeSelect");
-const linksContainer = document.getElementById("linksContainer");
-const previewImage = document.getElementById("previewImage");
-const qrButton = document.getElementById("qrButton");
-const qrModal = document.getElementById("qrModal");
-const closeModal = document.getElementById("closeModal");
-const qrImage = document.getElementById("qrImage");
-const shareButton = document.getElementById("shareButton");
-const qrFloating = document.getElementById("qrFloating");
-const qrFloatingImage = document.getElementById("qrFloatingImage");
+const select = gID("volumeSelect");
+const linksContainer = gID("linksContainer");
+const previewImage = gID("previewImage");
+const qrButton = gID("qrButton");
+const qrModal = gID("qrModal");
+const closeModal = gID("closeModal");
+const qrImage = gID("qrImage");
+const shareButton = gID("shareButton");
+const qrFloating = gID("qrFloating");
+const qrFloatingImage = gID("qrFloatingImage");
 
 function detectLang() {
     const lang = (navigator.language || "en").slice(0, 2);
@@ -166,13 +168,18 @@ function applyTranslations() {
     const lang = detectLang();
     const t = translations[lang];
 
-    document.getElementById("title").innerHTML = `${t.title}<br><small>${t.sTitle}</small>`;
-    document.getElementById("subtitle").innerHTML = t.subtitle;
-    document.getElementById("selectLabel").textContent = t.select;
-    document.getElementById("qrTitle").textContent = t.qrTitle;
-    document.getElementById("closeModal").textContent = t.close;
-    document.getElementById("followMe").textContent = t.followMe;
-    document.getElementById("qrText").textContent = t.qrTitle;
+    gID("title").innerHTML = `${t.title}<br><small>${t.sTitle}</small>`;
+    gID("subtitle").innerHTML = t.subtitle;
+    gID("selectLabel").textContent = t.select;
+    gID("qrTitle").textContent = t.qrTitle;
+    gID("closeModal").textContent = t.close;
+    gID("followMe").textContent = t.followMe;
+    gID("qrText").textContent = t.qrTitle;
+    gID("sBridges").textContent = t.sBridges;
+}
+
+function gID(id) {
+    return document.getElementById(id);
 }
 
 applyTranslations();
@@ -224,7 +231,7 @@ function renderVolume(name) {
     previewImage.src = `img/${override}.webp`;
 
     function getShareTitle(t) {
-        const volumeSelect = document.getElementById("volumeSelect");
+        const volumeSelect = gID("volumeSelect");
         const volumeText =
             volumeSelect.options[volumeSelect.selectedIndex]?.text || "";
 
@@ -335,7 +342,7 @@ async function shareInfo(title, context, url, trans = null) {
 }
 
 (function () {
-    const btn = document.getElementById("shareIcon");
+    const btn = gID("shareIcon");
     if (!btn) return;
 
     const ua = navigator.userAgent.toLowerCase();

@@ -63,12 +63,10 @@ const translations = {
 };
 
 const data = {
-    v1: {
-        preview: "volume1",
+    mirrors: {
+        preview: "mirrors",
         links: {
-            "🇬🇧 English": "https://a.co/d/1HQh5JM",
-            "🇪🇸 Español": "https://a.co/d/5RiXGEZ",
-            "🇫🇷 Français": "https://a.co/d/7EyHZZm"
+            notify: "https://amzn.to/3YXGR5W"
         }
     },
     v2: {
@@ -78,10 +76,12 @@ const data = {
             "🇪🇸 Español": "https://a.co/d/9GF2Ug3"
         }
     },
-    mirrors: {
-        preview: "mirrors",
+    v1: {
+        preview: "volume1",
         links: {
-            notify: "https://amzn.to/3YXGR5W"
+            "🇬🇧 English": "https://a.co/d/1HQh5JM",
+            "🇪🇸 Español": "https://a.co/d/5RiXGEZ",
+            "🇫🇷 Français": "https://a.co/d/7EyHZZm"
         }
     },
     children: {

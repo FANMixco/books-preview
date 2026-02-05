@@ -287,3 +287,22 @@ select:focus-visible {
     margin-bottom: 0.5rem;
     font-weight: bold;
 }
+
+#qrFloating {
+    display: none;
+}
+
+#qrButton {
+    display: inline-flex;
+}
+
+/* Landscape + wide screens */
+@media (min-width: 768px) and (orientation: landscape) {
+    #qrFloating {
+        display: block;
+    }
+
+    #qrButton {
+        display: none;
+    }
+}

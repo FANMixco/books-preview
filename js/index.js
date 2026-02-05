@@ -182,8 +182,6 @@ function gID(id) {
     return document.getElementById(id);
 }
 
-applyTranslations();
-
 function renderVolume(name) {
     const volume = data[name];
     const lang = detectLang();
@@ -256,23 +254,6 @@ function showToast(text) {
     }, 1500);
 }
 
-function updateQRVisibility() {
-    const isLandscape = window.matchMedia("(orientation: landscape)").matches;
-    const isWide = window.innerWidth >= 768;
-
-    if (isLandscape && isWide) {
-        qrFloating.style.display = "block";
-        qrButton.style.display = "none";
-    } else {
-        qrFloating.style.display = "none";
-        qrButton.style.display = "inline-flex";
-    }
-}
-
-window.addEventListener("resize", updateQRVisibility);
-window.addEventListener("orientationchange", updateQRVisibility);
-updateQRVisibility();
-
 function loadVolumes() {
     const lang = detectLang();
     const t = translations[lang] || translations.en;
@@ -290,6 +271,23 @@ function loadVolumes() {
 
     // keep selection if possible
     select.value = data[previous] ? previous : Object.keys(data)[0];
+}
+
+async function shareInfo(title, context, url, trans = null) {
+    if (navigator.share) {
+        try {
+            await navigator.share({
+                title: title,
+                text: context,
+                url: url
+            });
+        } catch {
+            // user cancelled
+        }
+    } else {
+        await navigator.clipboard.writeText(fullUrl);
+        showToast(trans.linkCopied || "Link copied");
+    }
 }
 
 select.addEventListener("change", (e) => {
@@ -312,10 +310,6 @@ qrModal.addEventListener("click", (e) => {
     }
 });
 
-// Load default
-loadVolumes();
-renderVolume(select.value);
-
 shareButton.addEventListener("click", async () => {
     const url = window.location.href;
     const lang = detectLang();
@@ -324,24 +318,13 @@ shareButton.addEventListener("click", async () => {
     shareInfo(t.title, t.subtitle, url, t);
 });
 
-async function shareInfo(title, context, url, trans = null) {
-    if (navigator.share) {
-        try {
-            await navigator.share({
-                title: title,
-                text: context,
-                url: url
-            });
-        } catch {
-            // user cancelled
-        }
-    } else {
-        await navigator.clipboard.writeText(fullUrl);
-        showToast(trans.linkCopied || "Link copied");
-    }
-}
-
 (function () {
+    applyTranslations();
+
+    // Load default
+    loadVolumes();
+    renderVolume(select.value);
+
     const btn = gID("shareIcon");
     if (!btn) return;
 

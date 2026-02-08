@@ -291,7 +291,7 @@ function renderVolume(name) {
             !isNotify;
 
         a.textContent = isSuggested
-            ? `⭐ • ${item.label}`
+            ? `⭐ ${item.label}`
             : item.label;
 
         const shareBtn = document.createElement("button");

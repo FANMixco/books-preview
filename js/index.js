@@ -81,58 +81,58 @@ const data = {
     v2: {
         preview: "volume2",
         links: {
-            "🇬🇧 English": "https://a.co/d/0HYJyAp",
-            "🇪🇸 Español": "https://a.co/d/9GF2Ug3"
+            en: { label: "🇬🇧 English", url: "https://a.co/d/0HYJyAp" },
+            es: { label: "🇪🇸 Español", url: "https://a.co/d/9GF2Ug3" }
         }
     },
     v1: {
         preview: "volume1",
         links: {
-            "🇬🇧 English": "https://a.co/d/1HQh5JM",
-            "🇪🇸 Español": "https://a.co/d/5RiXGEZ",
-            "🇫🇷 Français": "https://a.co/d/7EyHZZm"
+            en: { label: "🇬🇧 English", url: "https://a.co/d/1HQh5JM" },
+            es: { label: "🇪🇸 Español", url: "https://a.co/d/5RiXGEZ" },
+            fr: { label: "🇫🇷 Français", url: "https://a.co/d/7EyHZZm" }
         }
     },
     children: {
         preview: "children",
         links: {
-            "🇿🇦 Afrikáans — Español 🇸🇻": "3WD6lQKuilxlSFYUB6Kh",
-            "🇩🇪 Alemán — Español 🇸🇻": "f1aF8DNokAVBAQZkRFAU",
-            "🇸🇦 Árabe — Español 🇸🇻": "Y1LqND9BGYf54b6k8OrZ",
-            "🇧🇬 Búlgaro — Español 🇸🇻": "bZYnslXGNvOnueznybDY",
-            "🇨🇿 Checo — Español 🇸🇻": "cfXSdaDBv7RiN3lgxJeB",
-            "🇰🇷 Coreano — Español 🇸🇻": "uY6PMfDYv0fqpKFeEW5c",
-            "🇩🇰 Danés — Español 🇸🇻": "Nynk2PpW2Srd3ZsIEnsy",
-            "🇸🇰 Eslovaco — Español 🇸🇻": "MW7bKr1hDNgya7xuvDNm",
-            "🇸🇮 Esloveno — Español 🇸🇻": "dj0VmXcF35oyZWBWvC4K",
-            "🇪🇪 Estoniano — Español 🇸🇻": "1xdsCSW0KyFmkElLMAPl",
-            "🇫🇮 Finés — Español 🇸🇻": "sZ5XlmFWl5ayuTr7WY8w",
-            "🇫🇷 Francés — Español 🇸🇻": "k1IXa0mNdi7IbZjRgyOA/",
-            "🇫🇷 Francés — Español 🇸🇻 (mundo árabe 🕌)": "Zuo6lgIMxQ9RU5oZNYl2",
-            "🇬🇷 Griego — Español 🇸🇻": "m2sEkecLYzm8EKJFnVt2",
-            "🇮🇱 Hebreo — Español 🇸🇻": "dm7HNuAcMtUJAEX5FkgY",
-            "🇭🇺 Húngaro — Español 🇸🇻": "pMzExuw0SKgo3LUzgpS6",
-            "🇯🇵 Japonés — Español 🇸🇻": "ygATteMETehlTuL45FFl",
-            "🇮🇳 Hindi — Español 🇸🇻": "UOk2rg59hfZCToQQswki",
-            "🇮🇩 Indonesio — Español 🇸🇻": "XWdBl2ncAVGOFWCi3Xrr",
-            "⭐ • 🇬🇧 Inglés — Español 🇸🇻": "3OA2BbhRZgysnB22bzdX",
-            "🇮🇹 Italiano — Español 🇸🇻": "j8Rj4RqvEY7k7gFxRyKU",
-            "🇱🇻 Letón — Español 🇸🇻": "zgrgHl6OUlEemd4xV01n",
-            "🇱🇹 Lituano — Español 🇸🇻": "IoxjUEj1whibCjvLJhYx",
-            "🇨🇳 Mandarín — Español 🇸🇻": "8IwA2B6lYhPwonEWAyi9",
-            "🇳🇱 Neerlandés — Español 🇸🇻": "bQerdVPWk3U5SW6acdhC",
-            "🇳🇴 Noruego — Español 🇸🇻": "Y2tUPDSaXBtjtm9MlY4r",
-            "🇮🇷 Persa — Español 🇸🇻": "n0K4Atj9gyyY9GiyY1TZ",
-            "🇵🇱 Polaco — Español 🇸🇻": "6OPP09BU4Bl8MmDHJlrg",
-            "🇵🇹 Portugués — Español 🇸🇻": "rfxpZcSzaii9XFSVq2tM",
-            "🇷🇴 Rumano — Español 🇸🇻": "onhYgaGTY1SYkZjarsH2",
-            "🇷🇺 Ruso — Español 🇸🇻": "hAQwsVmXeM7fPEj4ZgWi",
-            "🇭🇷 Serbocroata — Español 🇸🇻 (alfabeto latino)": "Zo9CIFblfvnXukVQMQMv",
-            "🇹🇿 Suajili — Español 🇸🇻": "pgOO8udibujPhEwiwyIN",
-            "🇸🇪 Sueco — Español 🇸🇻": "03wQSTdDdP8tEf2oUJhe",
-            "🇹🇷 Turco — Español 🇸🇻": "cCkWWOdOtlkFpiqvjtsz",
-            "🇺🇦 Ucraniano — Español 🇸🇻": "WZzaEHSiv8HQmRGL1oFQ",
-            "🇻🇳 Vietnamita — Español 🇸🇻": "0JTPN1JHxuIKnS6CFpqJ",
+            af: { label: "🇿🇦 Afrikáans — Español 🇸🇻", id: "3WD6lQKuilxlSFYUB6Kh" },
+            de: { label: "🇩🇪 Alemán — Español 🇸🇻", id: "f1aF8DNokAVBAQZkRFAU" },
+            ar: { label: "🇸🇦 Árabe — Español 🇸🇻", id: "Y1LqND9BGYf54b6k8OrZ" },
+            bg: { label: "🇧🇬 Búlgaro — Español 🇸🇻", id: "bZYnslXGNvOnueznybDY" },
+            cs: { label: "🇨🇿 Checo — Español 🇸🇻", id: "cfXSdaDBv7RiN3lgxJeB" },
+            ko: { label: "🇰🇷 Coreano — Español 🇸🇻", id: "uY6PMfDYv0fqpKFeEW5c" },
+            da: { label: "🇩🇰 Danés — Español 🇸🇻", id: "Nynk2PpW2Srd3ZsIEnsy" },
+            sk: { label: "🇸🇰 Eslovaco — Español 🇸🇻", id: "MW7bKr1hDNgya7xuvDNm" },
+            sl: { label: "🇸🇮 Esloveno — Español 🇸🇻", id: "dj0VmXcF35oyZWBWvC4K" },
+            et: { label: "🇪🇪 Estoniano — Español 🇸🇻", id: "1xdsCSW0KyFmkElLMAPl" },
+            fi: { label: "🇫🇮 Finés — Español 🇸🇻", id: "sZ5XlmFWl5ayuTr7WY8w" },
+            fr: { label: "🇫🇷 Francés — Español 🇸🇻", id: "k1IXa0mNdi7IbZjRgyOA" },
+            fr_ar: { label: "🇫🇷 Francés — Español 🇸🇻 (mundo árabe 🕌)", id: "Zuo6lgIMxQ9RU5oZNYl2" },
+            el: { label: "🇬🇷 Griego — Español 🇸🇻", id: "m2sEkecLYzm8EKJFnVt2" },
+            he: { label: "🇮🇱 Hebreo — Español 🇸🇻", id: "dm7HNuAcMtUJAEX5FkgY" },
+            hu: { label: "🇭🇺 Húngaro — Español 🇸🇻", id: "pMzExuw0SKgo3LUzgpS6" },
+            ja: { label: "🇯🇵 Japonés — Español 🇸🇻", id: "ygATteMETehlTuL45FFl" },
+            hi: { label: "🇮🇳 Hindi — Español 🇸🇻", id: "UOk2rg59hfZCToQQswki" },
+            id: { label: "🇮🇩 Indonesio — Español 🇸🇻", id: "XWdBl2ncAVGOFWCi3Xrr" },
+            en: { label: "🇬🇧 Inglés — Español 🇸🇻", id: "3OA2BbhRZgysnB22bzdX" },
+            it: { label: "🇮🇹 Italiano — Español 🇸🇻", id: "j8Rj4RqvEY7k7gFxRyKU" },
+            lv: { label: "🇱🇻 Letón — Español 🇸🇻", id: "zgrgHl6OUlEemd4xV01n" },
+            lt: { label: "🇱🇹 Lituano — Español 🇸🇻", id: "IoxjUEj1whibCjvLJhYx" },
+            zh: { label: "🇨🇳 Mandarín — Español 🇸🇻", id: "8IwA2B6lYhPwonEWAyi9" },
+            nl: { label: "🇳🇱 Neerlandés — Español 🇸🇻", id: "bQerdVPWk3U5SW6acdhC" },
+            no: { label: "🇳🇴 Noruego — Español 🇸🇻", id: "Y2tUPDSaXBtjtm9MlY4r" },
+            fa: { label: "🇮🇷 Persa — Español 🇸🇻", id: "n0K4Atj9gyyY9GiyY1TZ" },
+            pl: { label: "🇵🇱 Polaco — Español 🇸🇻", id: "6OPP09BU4Bl8MmDHJlrg" },
+            pt: { label: "🇵🇹 Portugués — Español 🇸🇻", id: "rfxpZcSzaii9XFSVq2tM" },
+            ro: { label: "🇷🇴 Rumano — Español 🇸🇻", id: "onhYgaGTY1SYkZjarsH2" },
+            ru: { label: "🇷🇺 Ruso — Español 🇸🇻", id: "hAQwsVmXeM7fPEj4ZgWi" },
+            sh: { label: "🇭🇷 Serbocroata — Español 🇸🇻 (alfabeto latino)", id: "Zo9CIFblfvnXukVQMQMv" },
+            sw: { label: "🇹🇿 Suajili — Español 🇸🇻", id: "pgOO8udibujPhEwiwyIN" },
+            sv: { label: "🇸🇪 Sueco — Español 🇸🇻", id: "03wQSTdDdP8tEf2oUJhe" },
+            tr: { label: "🇹🇷 Turco — Español 🇸🇻", id: "cCkWWOdOtlkFpiqvjtsz" },
+            uk: { label: "🇺🇦 Ucraniano — Español 🇸🇻", id: "WZzaEHSiv8HQmRGL1oFQ" },
+            vi: { label: "🇻🇳 Vietnamita — Español 🇸🇻", id: "0JTPN1JHxuIKnS6CFpqJ" }
         }
     }
 };
@@ -191,26 +191,69 @@ function gID(id) {
 }
 
 function detectLang() {
-    const lang = (navigator.language || "en").slice(0, 2);
-    return translations[lang] ? lang : "en";
+    return (navigator.language || "en").slice(0, 2).toLowerCase();
 }
 
 function getCLang() {
     const lang = detectLang();
     return translations[lang] || translations.en;
-
 }
 
 function renderVolume(name) {
     const volume = data[name];
     const t = getCLang();
     const linkLabels = t.links || translations.en.links || {};
+    let matchedLang = null;
 
     linksContainer.innerHTML = "";
 
-    const entries = Object.entries(volume.links);
-    const shouldCollapse = entries.length > MAX_VISIBLE_LINKS;
-    const shouldSearch = entries.length >= SEARCH_THRESHOLD;
+    // Normalize ALL link formats into a single list of { key, label, url }
+    function toLink(key, raw) {
+        // Case A: raw is a string URL (e.g., mirrors.notify)
+        if (typeof raw === "string") {
+            return {
+                key,
+                label: linkLabels[key] || key, // notify becomes translated text
+                url: raw
+            };
+        }
+
+        // Case B/C: raw is an object: {label, url} OR {label, id}
+        const label = raw.label || linkLabels[key] || key;
+
+        // children uses { id } that needs PREZI_BASE
+        const url = raw.url
+            ? raw.url
+            : raw.id
+                ? (PREZI_BASE + raw.id)
+                : "";
+
+        return { key, label, url };
+    }
+
+    let items = Object.entries(volume.links).map(([key, raw]) => toLink(key, raw));
+
+    // Reorder: put user's language first if that key exists (en/es/fr/fi/...)
+    // Don't try to reorder notify-only lists, or Spanish bilingual "children" on es.
+    const userLang = detectLang();
+    const hasLanguageKeys = items.some(x => x.key.length <= 5 && x.key !== "notify"); // crude but works for your keys
+    const allowReorder = hasLanguageKeys && !(name === "children" && userLang === "es");
+
+    if (allowReorder) {
+        const matchIndex = items.findIndex(x => x.key === userLang);
+
+        if (matchIndex >= 0) {
+            matchedLang = items[matchIndex].key;
+
+            if (matchIndex > 0) {
+                const [match] = items.splice(matchIndex, 1);
+                items.unshift(match);
+            }
+        }
+    }
+
+    const shouldCollapse = items.length > MAX_VISIBLE_LINKS;
+    const shouldSearch = items.length >= SEARCH_THRESHOLD;
 
     let searchInput = null;
 
@@ -226,11 +269,9 @@ function renderVolume(name) {
         linksContainer.appendChild(searchInput);
     }
 
-    entries.forEach(([key, url], index) => {
+    items.forEach((item, index) => {
         const row = document.createElement("div");
         row.className = "link-row";
-
-        row.dataset.label = key.toLowerCase(); // used by search
         row.dataset.index = String(index);
 
         if (shouldCollapse && index >= MAX_VISIBLE_LINKS) {
@@ -240,15 +281,18 @@ function renderVolume(name) {
 
         const a = document.createElement("a");
         a.className = "link-btn";
-
-        const fullUrl =
-            name === "children" && !url.startsWith("http")
-                ? PREZI_BASE + url
-                : url;
-
-        a.href = fullUrl;
+        a.href = item.url;
         a.target = "_blank";
-        a.textContent = linkLabels[key] || key;
+
+        const isNotify = item.key === "notify";
+        const isSuggested =
+            matchedLang &&
+            item.key === matchedLang &&
+            !isNotify;
+
+        a.textContent = isSuggested
+            ? `⭐ • ${item.label}`
+            : item.label;
 
         const shareBtn = document.createElement("button");
         shareBtn.className = "share-mini";
@@ -258,10 +302,8 @@ function renderVolume(name) {
         shareBtn.addEventListener("click", async (e) => {
             e.preventDefault();
             e.stopPropagation();
-
             const shareTitle = getShareTitle(t);
-
-            shareInfo(shareTitle, a.textContent, fullUrl, t);
+            shareInfo(shareTitle, a.textContent, item.url, t);
         });
 
         row.appendChild(a);
@@ -274,12 +316,12 @@ function renderVolume(name) {
         toggleBtn = document.createElement("button");
         toggleBtn.className = "link-btn show-more";
 
-        const hiddenCount = entries.length - MAX_VISIBLE_LINKS;
+        const hiddenCount = items.length - MAX_VISIBLE_LINKS;
         toggleBtn.textContent = mLangs(hiddenCount);
 
         toggleBtn.addEventListener("click", () => {
             expanded = !expanded;
-            applyVisibility(); // key line
+            applyVisibility();
         });
 
         linksContainer.appendChild(toggleBtn);
@@ -292,13 +334,11 @@ function renderVolume(name) {
         searchInput.addEventListener("input", applyVisibility);
     }
 
-    applyVisibility(); // initial state
+    applyVisibility();
 
     function getShareTitle(t) {
         const volumeSelect = gID("volumeSelect");
-        const volumeText =
-            volumeSelect.options[volumeSelect.selectedIndex]?.text || "";
-
+        const volumeText = volumeSelect.options[volumeSelect.selectedIndex]?.text || "";
         return `${t.title} — ${volumeText}`;
     }
 
@@ -306,7 +346,6 @@ function renderVolume(name) {
         const q = (searchInput?.value || "").trim().toLowerCase();
         const searching = q.length > 0;
 
-        // When searching: show all matches, hide toggle
         if (toggleBtn) toggleBtn.style.display = searching ? "none" : "";
 
         rows.forEach((row) => {
@@ -321,12 +360,10 @@ function renderVolume(name) {
             }
 
             if (searching) {
-                // show all matching results, no collapsing
                 row.style.display = "";
                 return;
             }
 
-            // not searching -> apply collapse rules
             if (shouldCollapse && !expanded && index >= MAX_VISIBLE_LINKS) {
                 row.style.display = "none";
             } else {
@@ -334,15 +371,14 @@ function renderVolume(name) {
             }
         });
 
-        // Update button text when visible
         if (toggleBtn && !searching) {
-            const hiddenCount = entries.length - MAX_VISIBLE_LINKS;
+            const hiddenCount = items.length - MAX_VISIBLE_LINKS;
             toggleBtn.textContent = expanded ? t.sLess : mLangs(hiddenCount);
         }
     }
 
     function mLangs(total) {
-        return t.pLang.replace('{0}', total);
+        return t.pLang.replace("{0}", total);
     }
 }
 

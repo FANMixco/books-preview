@@ -306,3 +306,18 @@ select:focus-visible {
         display: none;
     }
 }
+
+.search-box {
+    width: 100%;
+    padding: 0.6rem 0.8rem;
+    margin-bottom: 0.4rem;
+    border-radius: 0.8rem;
+    border: 1px solid #2a2a2a;
+    background: rgba(255, 255, 255, 0.03);
+    color: white;
+    font-size: 0.9rem;
+}
+
+.search-box::placeholder {
+  color: rgba(255,255,255,0.5);
+}

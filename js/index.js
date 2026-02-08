@@ -8,6 +8,9 @@ const translations = {
         qrTitle: "Scan to open this page",
         close: "Close",
         followMe: "Follow me",
+        sLang: "Search language…",
+        pLang: "+ {0} more languages",
+        sLess: "Show less",
         volumes: {
             v1: "Volume 1",
             v2: "Volume 2",
@@ -28,6 +31,9 @@ const translations = {
         qrTitle: "Escanea para abrir esta página",
         close: "Cerrar",
         followMe: "Sígueme",
+        sLang: "Buscar idioma…",
+        pLang: "+ {0} idiomas más",
+        sLess: "Mostrar menos",
         volumes: {
             v1: "Volumen 1",
             v2: "Volumen 2",
@@ -48,6 +54,9 @@ const translations = {
         qrTitle: "Scannez pour ouvrir cette page",
         close: "Fermer",
         followMe: "Suivez-moi",
+        sLang: "Rechercher une langue…",
+        pLang: "+ {0} langues supplémentaires",
+        sLess: "Afficher moins",
         volumes: {
             v1: "Tome 1",
             v2: "Tome 2",
@@ -159,14 +168,13 @@ const shareButton = gID("shareButton");
 const qrFloating = gID("qrFloating");
 const qrFloatingImage = gID("qrFloatingImage");
 
-function detectLang() {
-    const lang = (navigator.language || "en").slice(0, 2);
-    return translations[lang] ? lang : "en";
-}
+// Optional UI behavior
+const MAX_VISIBLE_LINKS = 4;   // collapse after this (optional)
+const SEARCH_THRESHOLD = 8;    // future search trigger
+//const MAX_VISIBLE_LINKS = Infinity;
 
 function applyTranslations() {
-    const lang = detectLang();
-    const t = translations[lang];
+    const t = getCLang();
 
     gID("title").innerHTML = `${t.title}<br><small>${t.sTitle}</small>`;
     gID("subtitle").innerHTML = t.subtitle;
@@ -182,17 +190,53 @@ function gID(id) {
     return document.getElementById(id);
 }
 
+function detectLang() {
+    const lang = (navigator.language || "en").slice(0, 2);
+    return translations[lang] ? lang : "en";
+}
+
+function getCLang() {
+    const lang = detectLang();
+    return translations[lang] || translations.en;
+
+}
+
 function renderVolume(name) {
     const volume = data[name];
-    const lang = detectLang();
-    const t = translations[lang] || translations.en;
+    const t = getCLang();
     const linkLabels = t.links || translations.en.links || {};
 
     linksContainer.innerHTML = "";
 
-    Object.entries(volume.links).forEach(([key, url]) => {
+    const entries = Object.entries(volume.links);
+    const shouldCollapse = entries.length > MAX_VISIBLE_LINKS;
+    const shouldSearch = entries.length >= SEARCH_THRESHOLD;
+
+    let searchInput = null;
+
+    const rows = [];
+    let toggleBtn = null;
+    let expanded = false;
+
+    if (shouldSearch) {
+        searchInput = document.createElement("input");
+        searchInput.type = "text";
+        searchInput.placeholder = t.sLang;
+        searchInput.className = "search-box";
+        linksContainer.appendChild(searchInput);
+    }
+
+    entries.forEach(([key, url], index) => {
         const row = document.createElement("div");
         row.className = "link-row";
+
+        row.dataset.label = key.toLowerCase(); // used by search
+        row.dataset.index = String(index);
+
+        if (shouldCollapse && index >= MAX_VISIBLE_LINKS) {
+            row.style.display = "none";
+            row.classList.add("extra-link");
+        }
 
         const a = document.createElement("a");
         a.className = "link-btn";
@@ -223,10 +267,32 @@ function renderVolume(name) {
         row.appendChild(a);
         row.appendChild(shareBtn);
         linksContainer.appendChild(row);
+        rows.push(row);
     });
 
-    const override = PREVIEW_OVERRIDES[name]?.[lang] || volume.preview;
+    if (shouldCollapse) {
+        toggleBtn = document.createElement("button");
+        toggleBtn.className = "link-btn show-more";
+
+        const hiddenCount = entries.length - MAX_VISIBLE_LINKS;
+        toggleBtn.textContent = mLangs(hiddenCount);
+
+        toggleBtn.addEventListener("click", () => {
+            expanded = !expanded;
+            applyVisibility(); // key line
+        });
+
+        linksContainer.appendChild(toggleBtn);
+    }
+
+    const override = PREVIEW_OVERRIDES[name]?.[detectLang()] || volume.preview;
     previewImage.src = `img/${override}.webp`;
+
+    if (searchInput) {
+        searchInput.addEventListener("input", applyVisibility);
+    }
+
+    applyVisibility(); // initial state
 
     function getShareTitle(t) {
         const volumeSelect = gID("volumeSelect");
@@ -234,6 +300,49 @@ function renderVolume(name) {
             volumeSelect.options[volumeSelect.selectedIndex]?.text || "";
 
         return `${t.title} — ${volumeText}`;
+    }
+
+    function applyVisibility() {
+        const q = (searchInput?.value || "").trim().toLowerCase();
+        const searching = q.length > 0;
+
+        // When searching: show all matches, hide toggle
+        if (toggleBtn) toggleBtn.style.display = searching ? "none" : "";
+
+        rows.forEach((row) => {
+            const index = Number(row.dataset.index);
+            const text = row.textContent.toLowerCase();
+
+            const matches = !searching || text.includes(q);
+
+            if (!matches) {
+                row.style.display = "none";
+                return;
+            }
+
+            if (searching) {
+                // show all matching results, no collapsing
+                row.style.display = "";
+                return;
+            }
+
+            // not searching -> apply collapse rules
+            if (shouldCollapse && !expanded && index >= MAX_VISIBLE_LINKS) {
+                row.style.display = "none";
+            } else {
+                row.style.display = "";
+            }
+        });
+
+        // Update button text when visible
+        if (toggleBtn && !searching) {
+            const hiddenCount = entries.length - MAX_VISIBLE_LINKS;
+            toggleBtn.textContent = expanded ? t.sLess : mLangs(hiddenCount);
+        }
+    }
+
+    function mLangs(total) {
+        return t.pLang.replace('{0}', total);
     }
 }
 
@@ -255,8 +364,7 @@ function showToast(text) {
 }
 
 function loadVolumes() {
-    const lang = detectLang();
-    const t = translations[lang] || translations.en;
+    const t = getCLang();
     const titles = t.volumes || translations.en.volumes;
 
     const previous = select.value;
@@ -312,10 +420,9 @@ qrModal.addEventListener("click", (e) => {
 
 shareButton.addEventListener("click", async () => {
     const url = window.location.href;
-    const lang = detectLang();
-    const t = translations[lang] || translations.en;
+    //const t = getCLang();
 
-    shareInfo(t.title, t.subtitle, url, t);
+    shareInfo(t.title, t.subtitle, url, getCLang());
 });
 
 (function () {

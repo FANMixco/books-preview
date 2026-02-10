@@ -1,160 +1,18 @@
-// --- Simple i18n (EN / ES / FR) ---
-const translations = {
-    en: {
-        title: "Timeless Stories",
-        sTitle: "Official Book Hub",
-        subtitle: "Your quick access to all volumes and languages",
-        select: "Choose a Volume",
-        qrTitle: "Scan to open this page",
-        close: "Close",
-        followMe: "Follow me",
-        sLang: "Search language…",
-        pLang: "+ {0} more languages",
-        sLess: "Show less",
-        volumes: {
-            v1: "Volume 1",
-            v2: "Volume 2",
-            mirrors: "Spanish Mirrors (Upcoming)",
-            children: "Bilingual Children’s Edition"
-        },
-        links: {
-            notify: "Notify me 🔔 ⇛ 🇬🇧 🇪🇸"
-        },
-        linkCopied: "Link copied",
-        sBridges: "Building bridges across cultures."
-    },
-    es: {
-        title: "Historias Eternas",
-        sTitle: "Centro oficial de libros",
-        subtitle: "Tú acceso rápido a todos los volúmenes e idiomas",
-        select: "Selecciona un Volumen",
-        qrTitle: "Escanea para abrir esta página",
-        close: "Cerrar",
-        followMe: "Sígueme",
-        sLang: "Buscar idioma…",
-        pLang: "+ {0} idiomas más",
-        sLess: "Mostrar menos",
-        volumes: {
-            v1: "Volumen 1",
-            v2: "Volumen 2",
-            mirrors: "Espejos Españoles (Próximamente)",
-            children: "Edición infantil bilingüe"
-        },
-        links: {
-            notify: "Avísame 🔔 ⇛ 🇬🇧 🇪🇸"
-        },
-        linkCopied: "Enlace copiado",
-        sBridges: "Construyendo puentes entre culturas."
-    },
-    fr: {
-        title: "Légendes Éternelles",
-        sTitle: "Plateforme officielle des livres",
-        subtitle: "Votre accès rapide à tous les tomes et toutes les langues",
-        select: "Sélectionnez un Tome",
-        qrTitle: "Scannez pour ouvrir cette page",
-        close: "Fermer",
-        followMe: "Suivez-moi",
-        sLang: "Rechercher une langue…",
-        pLang: "+ {0} langues supplémentaires",
-        sLess: "Afficher moins",
-        volumes: {
-            v1: "Tome 1",
-            v2: "Tome 2",
-            mirrors: "Miroirs Espagnols (À venir)",
-            children: "Édition bilingue pour enfants"
-        },
-        links: {
-            notify: "Me notifier 🔔 ⇛ 🇬🇧 🇪🇸"
-        },
-        linkCopied: "Lien copié",
-        sBridges: "Construire des ponts entre les cultures."
-    }
-};
+let data = {};
+let translations = {};
+let PREVIEW_OVERRIDES = {};
 
-const data = {
-    mirrors: {
-        preview: "mirrors",
-        links: {
-            notify: "https://amzn.to/3YXGR5W"
-        }
-    },
-    v2: {
-        preview: "volume2",
-        links: {
-            en: { label: "🇬🇧 English", url: "https://a.co/d/0HYJyAp" },
-            es: { label: "🇪🇸 Español", url: "https://a.co/d/9GF2Ug3" }
-        }
-    },
-    v1: {
-        preview: "volume1",
-        links: {
-            en: { label: "🇬🇧 English", url: "https://a.co/d/1HQh5JM" },
-            es: { label: "🇪🇸 Español", url: "https://a.co/d/5RiXGEZ" },
-            fr: { label: "🇫🇷 Français", url: "https://a.co/d/7EyHZZm" }
-        }
-    },
-    children: {
-        preview: "children",
-        links: {
-            af: { label: "🇿🇦 Afrikáans — Español 🇸🇻", id: "3WD6lQKuilxlSFYUB6Kh" },
-            de: { label: "🇩🇪 Alemán — Español 🇸🇻", id: "f1aF8DNokAVBAQZkRFAU" },
-            ar: { label: "🇸🇦 Árabe — Español 🇸🇻", id: "Y1LqND9BGYf54b6k8OrZ" },
-            bg: { label: "🇧🇬 Búlgaro — Español 🇸🇻", id: "bZYnslXGNvOnueznybDY" },
-            cs: { label: "🇨🇿 Checo — Español 🇸🇻", id: "cfXSdaDBv7RiN3lgxJeB" },
-            ko: { label: "🇰🇷 Coreano — Español 🇸🇻", id: "uY6PMfDYv0fqpKFeEW5c" },
-            da: { label: "🇩🇰 Danés — Español 🇸🇻", id: "Nynk2PpW2Srd3ZsIEnsy" },
-            sk: { label: "🇸🇰 Eslovaco — Español 🇸🇻", id: "MW7bKr1hDNgya7xuvDNm" },
-            sl: { label: "🇸🇮 Esloveno — Español 🇸🇻", id: "dj0VmXcF35oyZWBWvC4K" },
-            et: { label: "🇪🇪 Estoniano — Español 🇸🇻", id: "1xdsCSW0KyFmkElLMAPl" },
-            fi: { label: "🇫🇮 Finés — Español 🇸🇻", id: "sZ5XlmFWl5ayuTr7WY8w" },
-            fr: { label: "🇫🇷 Francés — Español 🇸🇻", id: "k1IXa0mNdi7IbZjRgyOA" },
-            fr_ar: { label: "🇫🇷 Francés — Español 🇸🇻 (mundo árabe 🕌)", id: "Zuo6lgIMxQ9RU5oZNYl2" },
-            el: { label: "🇬🇷 Griego — Español 🇸🇻", id: "m2sEkecLYzm8EKJFnVt2" },
-            he: { label: "🇮🇱 Hebreo — Español 🇸🇻", id: "dm7HNuAcMtUJAEX5FkgY" },
-            hu: { label: "🇭🇺 Húngaro — Español 🇸🇻", id: "pMzExuw0SKgo3LUzgpS6" },
-            ja: { label: "🇯🇵 Japonés — Español 🇸🇻", id: "ygATteMETehlTuL45FFl" },
-            hi: { label: "🇮🇳 Hindi — Español 🇸🇻", id: "UOk2rg59hfZCToQQswki" },
-            id: { label: "🇮🇩 Indonesio — Español 🇸🇻", id: "XWdBl2ncAVGOFWCi3Xrr" },
-            en: { label: "🇬🇧 Inglés — Español 🇸🇻", id: "3OA2BbhRZgysnB22bzdX" },
-            it: { label: "🇮🇹 Italiano — Español 🇸🇻", id: "j8Rj4RqvEY7k7gFxRyKU" },
-            lv: { label: "🇱🇻 Letón — Español 🇸🇻", id: "zgrgHl6OUlEemd4xV01n" },
-            lt: { label: "🇱🇹 Lituano — Español 🇸🇻", id: "IoxjUEj1whibCjvLJhYx" },
-            zh: { label: "🇨🇳 Mandarín — Español 🇸🇻", id: "8IwA2B6lYhPwonEWAyi9" },
-            nl: { label: "🇳🇱 Neerlandés — Español 🇸🇻", id: "bQerdVPWk3U5SW6acdhC" },
-            no: { label: "🇳🇴 Noruego — Español 🇸🇻", id: "Y2tUPDSaXBtjtm9MlY4r" },
-            fa: { label: "🇮🇷 Persa — Español 🇸🇻", id: "n0K4Atj9gyyY9GiyY1TZ" },
-            pl: { label: "🇵🇱 Polaco — Español 🇸🇻", id: "6OPP09BU4Bl8MmDHJlrg" },
-            pt: { label: "🇵🇹 Portugués — Español 🇸🇻", id: "rfxpZcSzaii9XFSVq2tM" },
-            ro: { label: "🇷🇴 Rumano — Español 🇸🇻", id: "onhYgaGTY1SYkZjarsH2" },
-            ru: { label: "🇷🇺 Ruso — Español 🇸🇻", id: "hAQwsVmXeM7fPEj4ZgWi" },
-            sh: { label: "🇭🇷 Serbocroata — Español 🇸🇻 (alfabeto latino)", id: "Zo9CIFblfvnXukVQMQMv" },
-            sw: { label: "🇹🇿 Suajili — Español 🇸🇻", id: "pgOO8udibujPhEwiwyIN" },
-            sv: { label: "🇸🇪 Sueco — Español 🇸🇻", id: "03wQSTdDdP8tEf2oUJhe" },
-            tr: { label: "🇹🇷 Turco — Español 🇸🇻", id: "cCkWWOdOtlkFpiqvjtsz" },
-            uk: { label: "🇺🇦 Ucraniano — Español 🇸🇻", id: "WZzaEHSiv8HQmRGL1oFQ" },
-            vi: { label: "🇻🇳 Vietnamita — Español 🇸🇻", id: "0JTPN1JHxuIKnS6CFpqJ" }
-        }
-    }
-};
+async function loadConfigs() {
+    const [books, trans, previews] = await Promise.all([
+        fetch("js/data/books.min.json").then(r => r.json()),
+        fetch("js/data/translations.min.json").then(r => r.json()),
+        fetch("js/config/previews.min.json").then(r => r.json())
+    ]);
 
-const PREVIEW_OVERRIDES = {
-    v1: {
-        en: "volume1",
-        es: "volume1_es",
-        fr: "volume1_fr"
-    },
-    v2: {
-        es: "volume2_es"
-    },
-    mirrors: {
-        en: "mirrors",
-        es: "mirrors_es"
-    },
-    children: {
-        fr: "children_fr"
-        // en + es fall back to "children"
-    }
-};
+    data = books;
+    translations = trans;
+    PREVIEW_OVERRIDES = previews;
+}
 
 const PREZI_BASE = "https://prezi.com/view/";
 const select = gID("volumeSelect");
@@ -461,10 +319,10 @@ shareButton.addEventListener("click", async () => {
     shareInfo(t.title, t.subtitle, url, getCLang());
 });
 
-(function () {
-    applyTranslations();
+(async function init() {
+    await loadConfigs();
 
-    // Load default
+    applyTranslations();
     loadVolumes();
     renderVolume(select.value);
 
@@ -485,4 +343,27 @@ shareButton.addEventListener("click", async () => {
 
     // Add the detected one
     btn.classList.add(iconClass);
+
+    //analytics
+
+    let loaded = false;
+
+    function loadGA() {
+        if (loaded) return;
+        loaded = true;
+
+        const s = document.createElement('script');
+        s.src = "https://www.googletagmanager.com/gtag/js?id=G-Y6F0CLJDS8";
+        s.async = true;
+        document.head.appendChild(s);
+
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = function(){ dataLayer.push(arguments); };
+        gtag('js', new Date());
+        gtag('config', 'G-Y6F0CLJDS8');
+    }
+
+    ['scroll','mousemove','touchstart','keydown'].forEach(evt =>
+        window.addEventListener(evt, loadGA, { once:true })
+    );
 })();

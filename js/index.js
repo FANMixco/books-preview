@@ -314,7 +314,7 @@ qrModal.addEventListener("click", (e) => {
 
 shareButton.addEventListener("click", async () => {
     const url = window.location.href;
-    //const t = getCLang();
+    const t = getCLang();
 
     shareInfo(t.title, t.subtitle, url, getCLang());
 });

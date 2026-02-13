@@ -61,41 +61,28 @@ function renderVolume(name) {
     const volume = data[name];
     const t = getCLang();
     const linkLabels = t.links || translations.en.links || {};
-    let matchedLang = null;
-
-    linksContainer.innerHTML = "";
-
-    // Normalize ALL link formats into a single list of { key, label, url }
-    function toLink(key, raw) {
-        // Case A: raw is a string URL (e.g., mirrors.notify)
-        if (typeof raw === "string") {
-            return {
-                key,
-                label: linkLabels[key] || key, // notify becomes translated text
-                url: raw
-            };
-        }
-
-        // Case B/C: raw is an object: {label, url} OR {label, id}
-        const label = raw.label || linkLabels[key] || key;
-
-        // children uses { id } that needs PREZI_BASE
-        const url = raw.url
-            ? raw.url
-            : raw.id
-                ? (PREZI_BASE + raw.id)
-                : "";
-
-        return { key, label, url };
-    }
-
-    let items = Object.entries(volume.links).map(([key, raw]) => toLink(key, raw));
-
     // Reorder: put user's language first if that key exists (en/es/fr/fi/...)
     // Don't try to reorder notify-only lists, or Spanish bilingual "children" on es.
     const userLang = detectLang();
+    const override = PREVIEW_OVERRIDES[name]?.[detectLang()] || volume.preview;
+
+    const rows = [];
+
+    let matchedLang = null;
+    let items = Object.entries(volume.links).map(([key, raw]) => toLink(key, raw));
+
+    let searchInput = null;
+
+    let toggleBtn = null;
+    let expanded = false;
+
     const hasLanguageKeys = items.some(x => x.key.length <= 5 && x.key !== "notify"); // crude but works for your keys
     const allowReorder = hasLanguageKeys && !(name === "children" && userLang === "es");
+
+    const shouldCollapse = items.length > MAX_VISIBLE_LINKS;
+    const shouldSearch = items.length >= SEARCH_THRESHOLD;
+
+    linksContainer.innerHTML = "";
 
     if (allowReorder) {
         const matchIndex = items.findIndex(x => x.key === userLang);
@@ -110,20 +97,13 @@ function renderVolume(name) {
         }
     }
 
-    const shouldCollapse = items.length > MAX_VISIBLE_LINKS;
-    const shouldSearch = items.length >= SEARCH_THRESHOLD;
-
-    let searchInput = null;
-
-    const rows = [];
-    let toggleBtn = null;
-    let expanded = false;
-
     if (shouldSearch) {
+        const sB = "search-box";
         searchInput = document.createElement("input");
+        searchInput.id = sB;
         searchInput.type = "text";
         searchInput.placeholder = t.sLang;
-        searchInput.className = "search-box";
+        searchInput.className = sB;
         linksContainer.appendChild(searchInput);
     }
 
@@ -185,7 +165,6 @@ function renderVolume(name) {
         linksContainer.appendChild(toggleBtn);
     }
 
-    const override = PREVIEW_OVERRIDES[name]?.[detectLang()] || volume.preview;
     previewImage.src = `img/${override}.webp`;
 
     if (searchInput) {
@@ -238,23 +217,30 @@ function renderVolume(name) {
     function mLangs(total) {
         return t.pLang.replace("{0}", total);
     }
-}
 
-function showToast(text) {
-    let toast = document.querySelector(".toast");
+    // Normalize ALL link formats into a single list of { key, label, url }
+    function toLink(key, raw) {
+        // Case A: raw is a string URL (e.g., mirrors.notify)
+        if (typeof raw === "string") {
+            return {
+                key,
+                label: linkLabels[key] || key, // notify becomes translated text
+                url: raw
+            };
+        }
 
-    if (!toast) {
-        toast = document.createElement("div");
-        toast.className = "toast";
-        document.body.appendChild(toast);
+        // Case B/C: raw is an object: {label, url} OR {label, id}
+        const label = raw.label || linkLabels[key] || key;
+
+        // children uses { id } that needs PREZI_BASE
+        const url = raw.url
+            ? raw.url
+            : raw.id
+                ? (PREZI_BASE + raw.id)
+                : "";
+
+        return { key, label, url };
     }
-
-    toast.textContent = text;
-    toast.classList.add("show");
-
-    setTimeout(() => {
-        toast.classList.remove("show");
-    }, 1500);
 }
 
 function loadVolumes() {
@@ -288,7 +274,24 @@ async function shareInfo(title, context, url, trans = null) {
         }
     } else {
         await navigator.clipboard.writeText(fullUrl);
-        showToast(trans.linkCopied || "Link copied");
+        showToast(trans.linkCopied);
+    }
+
+    function showToast(text) {
+        let toast = document.querySelector(".toast");
+
+        if (!toast) {
+            toast = document.createElement("div");
+            toast.className = "toast";
+            document.body.appendChild(toast);
+        }
+
+        toast.textContent = text;
+        toast.classList.add("show");
+
+        setTimeout(() => {
+            toast.classList.remove("show");
+        }, 1500);
     }
 }
 
@@ -313,10 +316,9 @@ qrModal.addEventListener("click", (e) => {
 });
 
 shareButton.addEventListener("click", async () => {
-    const url = window.location.href;
     const t = getCLang();
 
-    shareInfo(t.title, t.subtitle, url, getCLang());
+    shareInfo(t.title, t.subtitle, window.location.href, getCLang());
 });
 
 (async function init() {
@@ -327,8 +329,6 @@ shareButton.addEventListener("click", async () => {
     renderVolume(select.value);
 
     const btn = gID("shareIcon");
-    if (!btn) return;
-
     const ua = navigator.userAgent.toLowerCase();
     let iconClass = "icon-share"; // default (desktop / unknown)
 
@@ -358,12 +358,12 @@ shareButton.addEventListener("click", async () => {
         document.head.appendChild(s);
 
         window.dataLayer = window.dataLayer || [];
-        window.gtag = function(){ dataLayer.push(arguments); };
+        window.gtag = function () { dataLayer.push(arguments); };
         gtag('js', new Date());
         gtag('config', 'G-Y6F0CLJDS8');
     }
 
-    ['scroll','mousemove','touchstart','keydown'].forEach(evt =>
-        window.addEventListener(evt, loadGA, { once:true })
+    ['scroll', 'mousemove', 'touchstart', 'keydown'].forEach(evt =>
+        window.addEventListener(evt, loadGA, { once: true })
     );
 })();

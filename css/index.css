@@ -321,3 +321,7 @@ select:focus-visible {
 .search-box::placeholder {
   color: rgba(255,255,255,0.5);
 }
+
+.txt-bold {
+    font-weight: bold;
+}

@@ -13,7 +13,7 @@
         "volumes": {
             "v1": "Volume 1",
             "v2": "Volume 2",
-            "mirrors": "Spanish Mirrors (Upcoming)",
+            "mirrors": "Spanish Mirrors (Pre-order)",
             "children": "Bilingual Children’s Edition"
         },
         "links": {
@@ -36,7 +36,7 @@
         "volumes": {
             "v1": "Volumen 1",
             "v2": "Volumen 2",
-            "mirrors": "Espejos Españoles (Próximamente)",
+            "mirrors": "Espejos Españoles (Reserva)",
             "children": "Edición infantil bilingüe"
         },
         "links": {
@@ -59,7 +59,7 @@
         "volumes": {
             "v1": "Tome 1",
             "v2": "Tome 2",
-            "mirrors": "Miroirs Espagnols (À venir)",
+            "mirrors": "Miroirs Espagnols (Précommander)",
             "children": "Édition bilingue pour enfants"
         },
         "links": {

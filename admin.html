@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Data Manager</title>
+    <link rel="stylesheet" href="css/admin.css" />
+</head>
+
+<body>
+    <main class="manager-shell">
+        <aside class="sidebar" aria-label="Data files and languages">
+            <div class="brand-block">
+                <h1>Data Manager</h1>
+                <p>Edit source JSON and generate minified files in <code>js/data</code>.</p>
+            </div>
+
+            <button class="button button-primary full-width" id="openFolderButton" type="button">Open js/data folder</button>
+            <p class="status-note" id="folderStatus">Using bundled files for preview. Open the folder to save changes.</p>
+
+            <section class="panel-section" id="languageSection">
+                <div class="section-title">
+                    <span>Languages</span>
+                    <div class="section-actions">
+                        <button class="icon-button" id="deleteLanguageButton" type="button" title="Delete selected language">-</button>
+                        <button class="icon-button" id="refreshButton" type="button" title="Reload files">R</button>
+                    </div>
+                </div>
+                <div class="language-list" id="languageList"></div>
+                <form class="inline-form" id="addLanguageForm">
+                    <input id="newLanguageInput" type="text" autocomplete="off" placeholder="new language" aria-label="New language code" />
+                    <button class="icon-button" type="submit" title="Add language">+</button>
+                </form>
+            </section>
+
+            <section class="panel-section">
+                <div class="section-title">
+                    <span>Files</span>
+                    <strong id="fileCount">0 JSON</strong>
+                </div>
+                <div class="file-list" id="fileList"></div>
+            </section>
+        </aside>
+
+        <section class="workspace">
+            <header class="topbar">
+                <div>
+                    <h2 id="fileTitle">Select a file</h2>
+                    <p id="filePath">js/data</p>
+                </div>
+                <div class="actions">
+                    <button class="button" id="rawButton" type="button">Raw JSON</button>
+                    <button class="button" id="validateButton" type="button">Validate</button>
+                    <button class="button" id="minifyFileButton" type="button">Minify file</button>
+                    <button class="button" id="minifyAllButton" type="button">Minify all</button>
+                    <button class="button button-save" id="saveButton" type="button">Save</button>
+                </div>
+            </header>
+
+            <div class="notice" id="notice" role="status"></div>
+
+            <section class="editor" id="formEditor" aria-label="Form editor">
+                <div class="editor-header">
+                    <div>
+                        <h3 id="scopeTitle">Root</h3>
+                        <p id="scopeMeta">No file loaded</p>
+                    </div>
+                    <button class="button" id="addFieldButton" type="button">Add field</button>
+                </div>
+                <div class="field-list" id="fieldList"></div>
+            </section>
+
+            <section class="raw-editor hidden" id="rawEditor" aria-label="Raw JSON editor">
+                <textarea id="rawTextarea" spellcheck="false"></textarea>
+            </section>
+        </section>
+    </main>
+
+    <dialog id="fieldDialog">
+        <form method="dialog" class="dialog-body" id="fieldForm">
+            <h3>Add field</h3>
+            <label>
+                Path
+                <input id="fieldPathInput" type="text" placeholder="volumes.newKey" autocomplete="off" />
+            </label>
+            <label>
+                Value
+                <textarea id="fieldValueInput" rows="4" placeholder="Text value"></textarea>
+            </label>
+            <div class="dialog-actions">
+                <button class="button" value="cancel" type="button" id="cancelFieldButton">Cancel</button>
+                <button class="button button-primary" value="default" type="submit">Add</button>
+            </div>
+        </form>
+    </dialog>
+
+    <script src="js/admin.js"></script>
+</body>
+
+</html>

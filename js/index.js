@@ -15,6 +15,9 @@ async function loadConfigs() {
 }
 
 const PREZI_BASE = "https://prezi.com/view/";
+const DIRECT_DESTINATIONS = {
+    memory: "https://tstories.federiconavarrete.com/memory-game.html"
+};
 const select = gID("volumeSelect");
 const linksContainer = gID("linksContainer");
 const previewImage = gID("previewImage");
@@ -30,6 +33,7 @@ const qrFloatingImage = gID("qrFloatingImage");
 const MAX_VISIBLE_LINKS = 4;   // collapse after this (optional)
 const SEARCH_THRESHOLD = 8;    // future search trigger
 //const MAX_VISIBLE_LINKS = Infinity;
+let currentVolumeId = "";
 
 function applyTranslations() {
     const t = getCLang();
@@ -259,6 +263,7 @@ function loadVolumes() {
 
     // keep selection if possible
     select.value = data[previous] ? previous : Object.keys(data)[0];
+    currentVolumeId = select.value;
 }
 
 async function shareInfo(title, context, url, trans = null) {
@@ -296,6 +301,15 @@ async function shareInfo(title, context, url, trans = null) {
 }
 
 select.addEventListener("change", (e) => {
+    const destination = DIRECT_DESTINATIONS[e.target.value] || data[e.target.value]?.url;
+
+    if (destination) {
+        window.open(destination, "_blank", "noopener,noreferrer");
+        select.value = currentVolumeId || Object.keys(data)[0];
+        return;
+    }
+
+    currentVolumeId = e.target.value;
     renderVolume(e.target.value);
 });
 

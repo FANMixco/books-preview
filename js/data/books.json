@@ -62,5 +62,8 @@
             "uk": { "label": "🇺🇦 Ucraniano — Español 🇸🇻", "id": "WZzaEHSiv8HQmRGL1oFQ" },
             "vi": { "label": "🇻🇳 Vietnamita — Español 🇸🇻", "id": "0JTPN1JHxuIKnS6CFpqJ" }
         }
+    },
+    "memory": {
+        "url": "https://tstories.federiconavarrete.com/memory-game.html"
     }
 }

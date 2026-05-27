@@ -14,7 +14,8 @@
             "v1": "Volume 1",
             "v2": "Volume 2",
             "mirrors": "Spanish Mirrors",
-            "children": "Bilingual Children’s Edition"
+            "children": "Bilingual Children’s Edition",
+            "memory": "Memory Game"
         },
         "links": {
             "notify": "Notify me 🔔 ⇛ 🇬🇧 🇪🇸"
@@ -37,7 +38,8 @@
             "v1": "Volumen 1",
             "v2": "Volumen 2",
             "mirrors": "Espejos Españoles",
-            "children": "Edición infantil bilingüe"
+            "children": "Edición infantil bilingüe",
+            "memory": "Juego de memoria"
         },
         "links": {
             "notify": "Avísame 🔔 ⇛ 🇬🇧 🇪🇸"
@@ -60,7 +62,8 @@
             "v1": "Tome 1",
             "v2": "Tome 2",
             "mirrors": "Miroirs Espagnols",
-            "children": "Édition bilingue pour enfants"
+            "children": "Édition bilingue pour enfants",
+            "memory": "Jeu de mémoire"
         },
         "links": {
             "notify": "Me notifier 🔔 ⇛ 🇬🇧 🇪🇸"

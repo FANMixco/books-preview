@@ -37,6 +37,7 @@
     <meta property="twitter:image" content="https://books.federiconavarrete.com/img/preview.jpg">
 
     <link rel="stylesheet" href="css/icon-moon.min.css">
+    <link rel="canonical" href="https://books.federiconavarrete.com">
 </head>
 
 <body>
@@ -89,17 +90,48 @@
     <script src="js/index.min.js"></script>
 
     <script type="application/ld+json">
-			{
-			  "@context": "https://schema.org/",
-			  "@type": "WebSite",
-			  "name": "Timeless Stories — Official Book Hub",
-			  "url": "https://books.federiconavarrete.com",
-			  "potentialAction": {
-				"@type": "SearchAction",
-				"target": "{search_term_string}",
-				"query-input": "required name=search_term_string"
-			  }
-			}
+    {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "Timeless Stories — Official Book Hub",
+        "url": "https://books.federiconavarrete.com",
+        "description": "The official book series collection of Salvadoran folklore and legends by Federico Navarrete.",
+        "mainEntity": {
+            "@type": "ItemList",
+            "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "item": {
+                "@type": "Book",
+                "name": "Timeless Stories of El Salvador: The Beginning",
+                "author": "Federico Navarrete",
+                "url": "https://a.co/d/08nXczMU"
+                }
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "item": {
+                "@type": "Book",
+                "name": "Timeless Stories of El Salvador: Epiphany",
+                "author": "Federico Navarrete",
+                "url": "https://a.co/d/0bCerUQd"
+                }
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "item": {
+                "@type": "Book",
+                "name": "Timeless Stories of El Salvador: Spanish Mirrors",
+                "author": "Federico Navarrete",
+                "url": "https://a.co/d/04ZYlMi3"
+                }
+            }
+            ]
+        }
+    }
     </script>
 </body>
 

@@ -18,6 +18,7 @@ const PREZI_BASE = "https://prezi.com/view/";
 const DIRECT_DESTINATIONS = {
     memory: "https://tstories.federiconavarrete.com/memory-game.html"
 };
+const EMBED_PARAM = "embed=1";
 const select = gID("volumeSelect");
 const linksContainer = gID("linksContainer");
 const previewImage = gID("previewImage");
@@ -28,6 +29,9 @@ const qrImage = gID("qrImage");
 const shareButton = gID("shareButton");
 const qrFloating = gID("qrFloating");
 const qrFloatingImage = gID("qrFloatingImage");
+const gameModal = gID("gameModal");
+const closeGameModal = gID("closeGameModal");
+const memoryGameFrame = gID("memoryGameFrame");
 
 // Optional UI behavior
 const MAX_VISIBLE_LINKS = 4;   // collapse after this (optional)
@@ -300,11 +304,32 @@ async function shareInfo(title, context, url, trans = null) {
     }
 }
 
+function openGameModal(url) {
+    if (!memoryGameFrame.src) {
+        memoryGameFrame.src = toEmbedUrl(url);
+    }
+
+    gameModal.hidden = false;
+    document.body.classList.add("modal-open");
+    closeGameModal.focus();
+}
+
+function toEmbedUrl(url) {
+    const separator = url.includes("?") ? "&" : "?";
+    return `${url}${separator}${EMBED_PARAM}`;
+}
+
+function closeGameModalView() {
+    gameModal.hidden = true;
+    document.body.classList.remove("modal-open");
+    select.focus();
+}
+
 select.addEventListener("change", (e) => {
     const destination = DIRECT_DESTINATIONS[e.target.value] || data[e.target.value]?.url;
 
     if (destination) {
-        window.open(destination, "_blank", "noopener,noreferrer");
+        openGameModal(destination);
         select.value = currentVolumeId || Object.keys(data)[0];
         return;
     }
@@ -326,6 +351,20 @@ closeModal.addEventListener("click", (e) => {
 qrModal.addEventListener("click", (e) => {
     if (e.target === qrModal) {
         qrModal.style.display = "none";
+    }
+});
+
+closeGameModal.addEventListener("click", closeGameModalView);
+
+gameModal.addEventListener("click", (e) => {
+    if (e.target === gameModal) {
+        closeGameModalView();
+    }
+});
+
+document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !gameModal.hidden) {
+        closeGameModalView();
     }
 });
 

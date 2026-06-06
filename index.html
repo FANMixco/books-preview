@@ -82,6 +82,17 @@
         </div>
     </div>
 
+    <!-- Memory Game Modal -->
+    <div class="game-modal" id="gameModal" hidden>
+        <div class="game-modal-panel" role="dialog" aria-modal="true" aria-labelledby="gameModalTitle">
+            <div class="game-modal-header">
+                <h2 id="gameModalTitle">Memory Game</h2>
+                <button class="game-modal-close" id="closeGameModal" type="button" aria-label="Close memory game">✖</button>
+            </div>
+            <iframe id="memoryGameFrame" title="Memory Game" loading="lazy" allowfullscreen></iframe>
+        </div>
+    </div>
+
     <div class="qr-floating" id="qrFloating">
         <p id="qrText"></p>
         <img id="qrFloatingImage" src="img/qr.png" loading="lazy" alt="QR Code" />

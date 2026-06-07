@@ -222,6 +222,7 @@ select:focus-visible {
 }
 
 .game-modal-close {
+    position: relative;
     width: 2.25rem;
     height: 2.25rem;
     flex: 0 0 auto;
@@ -229,13 +230,23 @@ select:focus-visible {
     border: 1px solid rgba(255, 255, 255, 0.28);
     background: rgba(2, 6, 23, 0.88);
     color: #fff;
-    font-size: 1.05rem;
-    line-height: 1;
+    font-size: 0;
+    line-height: 0;
     cursor: pointer;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     padding: 0;
+}
+
+.game-modal-close::before {
+    content: "✖";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.05rem;
+    line-height: 1;
 }
 
 .game-modal-close:hover {

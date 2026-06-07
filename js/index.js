@@ -38,6 +38,7 @@ const MAX_VISIBLE_LINKS = 4;   // collapse after this (optional)
 const SEARCH_THRESHOLD = 8;    // future search trigger
 //const MAX_VISIBLE_LINKS = Infinity;
 let currentVolumeId = "";
+let volumeBeforeGame = "";
 
 function applyTranslations() {
     const t = getCLang();
@@ -322,6 +323,12 @@ function toEmbedUrl(url) {
 function closeGameModalView() {
     gameModal.hidden = true;
     document.body.classList.remove("modal-open");
+
+    if (volumeBeforeGame && select.value === "memory") {
+        select.value = volumeBeforeGame;
+        currentVolumeId = volumeBeforeGame;
+    }
+
     select.focus();
 }
 
@@ -329,11 +336,13 @@ select.addEventListener("change", (e) => {
     const destination = DIRECT_DESTINATIONS[e.target.value] || data[e.target.value]?.url;
 
     if (destination) {
+        volumeBeforeGame = currentVolumeId || Object.keys(data)[0];
+        currentVolumeId = e.target.value;
         openGameModal(destination);
-        select.value = currentVolumeId || Object.keys(data)[0];
         return;
     }
 
+    volumeBeforeGame = "";
     currentVolumeId = e.target.value;
     renderVolume(e.target.value);
 });

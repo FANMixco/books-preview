@@ -3,7 +3,8 @@
         "preview": "mirrors",
         "links": {
             "en": { "label": "🇬🇧 English", "url": "https://a.co/d/096xMhsQ" },
-            "es": { "label": "🇪🇸 Español", "url": "https://a.co/d/05i4jrwV" }
+            "es": { "label": "🇪🇸 Español", "url": "https://a.co/d/05i4jrwV" },
+            "fr": { "label": "🇪🇸 Español", "url": "https://a.co/d/07pLdMts" }
         }
     },
     "v2": {

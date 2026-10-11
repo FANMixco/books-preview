@@ -66,6 +66,26 @@ function getCLang() {
     return translations[lang] || translations.en;
 }
 
+function getHashVolumeId() {
+    const hash = decodeURIComponent(window.location.hash.slice(1)).trim();
+    return data[hash]?.links ? hash : "";
+}
+
+function applyHashVolume() {
+    const hashVolumeId = getHashVolumeId();
+
+    if (!hashVolumeId || select.value === hashVolumeId) {
+        return false;
+    }
+
+    volumeBeforeGame = "";
+    select.value = hashVolumeId;
+    currentVolumeId = hashVolumeId;
+    renderVolume(hashVolumeId);
+
+    return true;
+}
+
 function renderVolume(name) {
     const volume = data[name];
     const t = getCLang();
@@ -377,6 +397,8 @@ document.addEventListener("keydown", (e) => {
     }
 });
 
+window.addEventListener("hashchange", applyHashVolume);
+
 shareButton.addEventListener("click", async () => {
     const t = getCLang();
 
@@ -388,7 +410,10 @@ shareButton.addEventListener("click", async () => {
 
     applyTranslations();
     loadVolumes();
-    renderVolume(select.value);
+
+    if (!applyHashVolume()) {
+        renderVolume(select.value);
+    }
 
     const btn = gID("shareIcon");
     const ua = navigator.userAgent.toLowerCase();
